@@ -27,3 +27,7 @@ print(f"Age: {age}, Height: {height}, Weight:{weight}, IQ: {iq}")
 print("Here is a puzzle.")
 what = add(age,subtract(height,mutiply(weight,devide(iq,2))))
 print("That becomes:", what, "Can you do it by hand?")
+
+# ex22 What Do You Know So Far?
+# Make Flash Cards to remember what everything is going to do.
+# The most important thing when doing this exercise is :"There is no failure, only trying."
