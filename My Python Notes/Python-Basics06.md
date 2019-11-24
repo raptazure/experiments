@@ -74,7 +74,7 @@ categories: Python
   ```python
   try:
 		<被监控的可能引发异常的语句块>        
-  except BaseException [as e]：
+  except BaseException [as e]:
 		<异常处理语句块> 
   ```
   
@@ -125,8 +125,8 @@ categories: Python
 		<处理Exception1的语句块>
   except Exception2:
 		<处理Exception2的语句块>
-  except BaseException：
-  	<处理可能遗漏的异常的语句块> 
+  except BaseException:
+		<处理可能遗漏的异常的语句块> 
   ```
 	
 - 测试`try…多个except`结构：
