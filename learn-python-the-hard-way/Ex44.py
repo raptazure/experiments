@@ -1,28 +1,26 @@
-# ex44 Inheritance 
-
-class Parent(object):
+# ex44 Composition
+class Other(object):
     def override(self):
-        print("PARENT overried()")
+        print("OTHER override()")
     def implicit(self):
-        print("PARENT implicit()")
-    def alerted(self):
-        print("PARENT altered()")
-class Child(Parent):
+        print("OTHER implicit")
+    def altered(self):
+        print("OTHER alerted()")
+
+class Child(object):
+    def __init__(self):
+        self.other = Other()
+    def implicit(self):
+        self.other.implicit()
     def override(self):
         print("CHILD override()")
-    def altered(self):
-        print("CHILD, BEFORE PARENT altered()")
-        super(Child, self).alerted()
-        print("CHILD, AFTER PARENT altered()")
+    def alerted(self):
+        print("CHILD, BEFORE OTHER altered()")
+        self.other.altered()
+        print("CHILD, AFTER OTHER altered()")
 
-dad = Parent()
 son = Child()
 
-dad.implicit()
 son.implicit()
-
-dad.override()
 son.override()
-
-dad.alerted()
 son.alerted()
