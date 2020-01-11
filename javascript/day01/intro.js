@@ -1,0 +1,1 @@
+console.log("welcome to our external scripts test")
