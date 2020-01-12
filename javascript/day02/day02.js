@@ -51,8 +51,8 @@ console.log(`the sum of ${a} and ${b} is ${a + b}: ${8 == a + b}`)
 let js = "JavaScript"
 console.log(js.length)
 console.log(js[js.length - 1])
-console.log(js.toUpperCase)
-console.log(js.toLowerCase)
+console.log(js.toUpperCase())
+console.log(js.toLowerCase())
 
 // substr(): It takes two arguments, the starting index and number of characters to slice.
 console.log(js.substr(4, 6))
@@ -90,7 +90,7 @@ console.log(js.indexOf('java'))
 console.log(js.indexOf('Sc'))
 
 // lastIndexOf(): Takes takes a substring and if the substring exists in a string it returns the last position of the substring if it does not exist it returns -1
-console.log(s.lastIndexOf(s.length - 1))
+console.log(js.lastIndexOf('a'))
 
 // concat(): it takes many substrings and creates concatenation.
 console.log(s.concat('is great!'))
@@ -106,7 +106,7 @@ console.log(s1.endsWith(' world'))
 // search: it takes a substring as an argument and it returns the index of the first match.
 console.log(s1.search("world"))
 
-// match: it takes a substring or regular expression pattern as an argument and it returns an array if there is match if not it returns null. Let us see how a regular expression pattern looks like. It starts with / sign and ends with / sign.
+// match: it takes a substring or regular expression pattern as an argument and it returns an array if there is match if not it returns null. A regular expression pattern starts with / sign and ends with / sign.
 let string = 'love'
 let patternOne = /love/
 let patternTwo = /love/gi  // g-means to search in the whole text, i - case insensitive
