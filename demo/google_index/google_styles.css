@@ -1,0 +1,128 @@
+/* BASIC STYLES */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+/* NAV BAR */
+#nav_bar {
+  float: right;
+}
+
+#nav_bar li {
+  display: inline-block;
+  padding: 8px;
+}
+
+#nav_bar #sign_in {
+  background: cornflowerblue;
+  margin-right: 25px;
+  padding: 7px 15px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.nav-links {
+  color: #404040;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li.nav-links a:hover {
+  text-decoration: underline;
+}
+
+#sign_in:hover {
+  box-shadow: 1px 1px 5px #999;
+}
+
+#sign_in {
+  color: rgb(236, 228, 235);
+}
+
+.google #google_logo {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  clear: both;
+  padding-top: 112px;
+  padding-bottom: 1px;
+}
+
+.form {
+  text-align: center;
+}
+
+#form-search {
+  width: 450px;
+  line-height: 35px;
+  padding: 20px 10px;
+  border-radius: 20px;
+  border-color: grey;
+  border-width: 1.2px;
+}
+
+.form #form-search {
+  padding: 0 8px;
+  font-family: cursive;
+}
+
+.buttons {
+  text-align: center;
+  padding-top: 50px;
+  margin-bottom: 150px;
+}
+
+#button1 {
+  font-family: cursive;
+  border: 1px solid #46b4f3;
+  background: #46b4f3;
+}
+#button2 {
+  font-family: cursive;
+  border: 1px solid #46b4f3;
+  background: #46b4f3;
+}
+
+/* FOOTER */
+footer {
+  position: relative;
+  background: #f4f4f4;
+  border-top: solid 2px #ffffff;
+  bottom: 0;
+  height: 50px;
+  padding-bottom: 0;
+  width: 100%;
+}
+
+footer ul li {
+  display: inline;
+  color: #666666;
+  font-size: 16px;
+  padding: 10px;
+}
+
+footer ul {
+  float: left;
+  padding: 1px;
+}
+
+.footer ul a:hover {
+  text-decoration: underline;
+}
+
+.footer-right {
+  float: right;
+}
