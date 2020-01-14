@@ -103,10 +103,7 @@
 </a>
 ```
 - Semantic tags
-<br>
-![](note.png)
 ```html
-
 <body>
     <header id="main-header">
         <h1>My Website</h1>
@@ -159,6 +156,7 @@
 
 </body>
 ```
+![](note.png)
 - Other tags
 ```html
 <blockquote cite="http://sample.com">
