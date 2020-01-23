@@ -36,7 +36,7 @@ ages.sort()
 print(ages)
 min_age, max_age = ages[0], ages[len(ages) - 1]
 print(f"The sum is {min_age + max_age}")
-print(f"The median age is { (ages[len(ages) >> 1]+ ages[len(ages) // 2 + 1]) >> 1 }")
+print(f"The median age is { (ages[len(ages) >> 1] + ages[len(ages) // 2 + 1]) >> 1 }")
 age_sum = sum(ages, 0)
 age_aver = age_sum / len(ages)
 print("The average age is:", age_aver)
