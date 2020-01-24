@@ -75,7 +75,7 @@ if(js.includes('Java')) {
     console.log("true!")
 }
 
-// replace(): takes to parameter the old substring and new substring.
+// replace(): takes two parameter - the old substring and new substring.
 let country = 'china'
 console.log(country.replace('c', 'C'))
 
