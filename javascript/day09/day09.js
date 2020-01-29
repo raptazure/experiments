@@ -101,7 +101,6 @@ const scoresGreaterEight = scores.filter(score => score.score > 80)
 console.log(scoresGreaterEight)
 
 // reduce - Reduce takes a callback function. The call back function takes accumulator and current value as a parameter and returns a single value
-const curr = 0
 const sum0 = numbers.reduce((accum, curr) => accum + curr)
 console.log(sum0)
 

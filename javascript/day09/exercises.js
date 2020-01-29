@@ -101,3 +101,44 @@ const mostPopulatedCountries = (arr, num) => {
   return list.slice(0, num)
 }
 console.log(mostPopulatedCountries(countriesData, 5))
+
+const statistics = {
+  count: function (arr) {
+    return arr.length
+  },
+  sum: function (arr) {
+    return arr.reduce((accu, curr) => accu + curr)
+  },
+  range: function (arr) {
+    arr.sort((a, b) => a - b)
+    return arr[arr.length - 1] - arr[0]
+  },
+  median: function (arr) {
+    arr.sort((a, b) => a - b)
+    return (arr[parseInt(arr.length / 2)] + arr[parseInt((arr.length - 1) / 2)]) / 2
+  },
+  mode: function (arr) {
+    nums = {}
+    arr.forEach(element => nums[element] = 0)
+    arr.forEach(element => nums[element]++)
+    return Object.keys(nums).reduce((a, b) => nums[a] > nums[b] ? a : b)
+  },
+  variance: function (arr) {
+    let nums = statistics.count(arr)
+    let aver = statistics.sum(arr) / nums
+    return arr.reduce((accu, curr) => accu + (curr - aver) ** 2, 0) / nums
+  },
+  std: function (arr) {
+    return Math.sqrt(statistics.variance(arr))
+  }
+}
+
+const ages = [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26]
+
+console.log('Count:', statistics.count(ages)) // 25
+console.log('Sum: ', statistics.sum(ages)) // 744
+console.log('Range: ', statistics.range(ages)) // 14
+console.log('Median: ', statistics.median(ages)) // 29
+console.log('Mode: ', statistics.mode(ages)) // 26
+console.log('Variance: ', statistics.variance(ages))
+console.log('Standard Deviation: ', statistics.std(ages))
