@@ -64,7 +64,7 @@ regex_pattern = r'\d+'  # d+ mean one or more times
 txt = 'This regular expression example was made in December 6,  2019.'
 matches = re.findall(regex_pattern, txt)
 print(matches)  # ['6', '2019']
-
+ 
 # Period(.)
 txt = '''Apple and banana are fruits'''
 regex_pattern = r'[a].+'  # . any character, + any character one or more times
