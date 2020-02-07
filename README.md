@@ -1,6 +1,3 @@
-### 30 Days of Python
-- [Daily Code](https://github.com/Raptazure/love-py-and-js/tree/master/python-code)
-- [Original repo](https://github.com/Asabeneh/30-Days-Of-Python)
 ### Learn Python3 The Hard Way
 - [Code](https://github.com/Raptazure/love-py-and-js/tree/master/learn-python-the-hard-way)
 - [Book](https://github.com/Raptazure/love-py-and-js/blob/master/learn-python-the-hard-way/AW.Learn.Python.3.the.Hard.Way.pdf)
@@ -14,6 +11,10 @@
 - [Object-oriented programming](https://github.com/Raptazure/love-py-and-js/blob/master/python-notes/Python-Basics05.md)
 - [Exception](https://github.com/Raptazure/love-py-and-js/blob/master/python-notes/Python-Basics06.md)
 
+### 30 Days of Python
+- [Daily Code](https://github.com/Raptazure/love-py-and-js/tree/master/python-code)
+- [Original repo](https://github.com/Asabeneh/30-Days-Of-Python)
+
 ### 30 Days of JavaScript
 - [Daily Code](https://github.com/Raptazure/love-py-and-js/tree/master/javascript)
 - [Original repo](https://github.com/Asabeneh/30DaysOfJavaScript)
@@ -21,4 +22,5 @@
 ### TypeScript
 - [Code](https://github.com/Raptazure/love-py-and-js/tree/master/typescript/src)
 - [Notes](https://github.com/Raptazure/love-py-and-js/tree/master/typescript/notes)
+- [Book](https://github.com/basarat/typescript-book)
 - [Official Docs](https://www.typescriptlang.org/docs/home.html)

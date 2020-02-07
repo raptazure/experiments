@@ -4,8 +4,10 @@ var __rest = (this && this.__rest) || function (s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -56,7 +58,7 @@ let _2nd = [3, 4];
 let bothPlus = [0, ..._1st, ..._2nd, 5];
 console.log(bothPlus);
 let defaults = { food: "spicy", price: "$$", ambiance: "noisy" };
-let search = Object.assign({}, defaults, { food: "rich" });
+let search = Object.assign(Object.assign({}, defaults), { food: "rich" });
 console.log(search);
 // Object spread also has a couple of other surprising limits. First, it only includes an objects’ own, 
 // enumerable properties. Basically, that means you lose methods when you spread instances of an object:
