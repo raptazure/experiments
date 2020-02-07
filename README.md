@@ -21,6 +21,6 @@
 
 ### TypeScript
 - [Code](https://github.com/Raptazure/love-py-and-js/tree/master/typescript/src)
-- [Notes](https://github.com/Raptazure/love-py-and-js/tree/master/typescript/notes)
 - [Book](https://github.com/basarat/typescript-book)
+- [Topics](https://github.com/Raptazure/love-py-and-js/tree/master/typescript/topics)
 - [Official Docs](https://www.typescriptlang.org/docs/home.html)
