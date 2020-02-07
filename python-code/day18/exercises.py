@@ -46,3 +46,4 @@ for word in word_list:
         word_dict[word] = 1
 count = Counter(word_dict)
 print(count.most_common()[:3])
+ 
