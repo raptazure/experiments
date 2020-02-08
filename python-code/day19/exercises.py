@@ -53,6 +53,6 @@ for word in word_list:
     else:
         word_dict[word] = 1
 count = Counter(word_dict)
-print('The ten most frequent words used in  speech are:')
+print('The ten most frequent words used in the text are:')
 print(count.most_common()[:10])
 f.close()
