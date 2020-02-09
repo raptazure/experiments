@@ -32,4 +32,5 @@
 
 ### Rust
 
-- [Code](https://github.com/Raptazure/love-py-and-js/tree/master/rust)
+- [Code](https://github.com/Raptazure/love-py-and-js/tree/master/rust/src)
+- [Learn](https://www.rust-lang.org/learn)
