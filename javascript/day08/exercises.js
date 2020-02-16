@@ -74,7 +74,7 @@ const counter = (arr) => {
 }
 
 console.log(counter(values))
-keys = Object.keys(users)
+const keys = Object.keys(users)
 
 const findMERN = (arr) => {
   let ans = []
@@ -179,7 +179,7 @@ const choices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
 ];
 
 const idGenerator = () => {
-  id = ''
+  let id = ''
   for (let i = 0; i <= 6; i++) {
     id += choices[Math.floor(Math.random() * choices.length)]
   }
@@ -193,18 +193,17 @@ function format(date) {
   let hours = date.getHours()
   let minutes = date.getMinutes()
   let dayTime = hours > 12 ? 'PM' : 'AM'
-  if(month < 10) month = '0' + month
-  if(date < 10) date = '0' + date
-  if(hours < 10) hours = '0' + hours
+  if (month < 10) month = '0' + month
+  if (date < 10) date = '0' + date
+  if (hours < 10) hours = '0' + hours
   if (hours > 12) hours -= 12
-  if(minutes < 10) minutes = '0' + minutes
+  if (minutes < 10) minutes = '0' + minutes
   return month + '/' + date0 + '/' + year0 + ' ' + hours + ':' + minutes + ' ' + dayTime
 }
 
 // npm install prompt
 const prompt = require('prompt')
-const signUpAttributes = [
-  {
+const signUpAttributes = [{
     name: 'username',
     validator: /^[a-zA-Z\s\-]+$/,
     warning: 'Username is not valid, it can only contains letters, spaces, or dashes'
@@ -219,15 +218,12 @@ const signUpAttributes = [
   }
 ]
 
-const choiceOfSign = [
-  {
-    name: 'mode',
-    hidden: false
-  }
-]
+const choiceOfSign = [{
+  name: 'mode',
+  hidden: false
+}]
 
-const rate = [
-  {
+const rate = [{
     name: 'userId',
     hidden: false
   },
@@ -241,8 +237,7 @@ const rate = [
   }
 ]
 
-const like = [
-  {
+const like = [{
     name: 'userId',
     hidden: false
   },
@@ -252,14 +247,14 @@ const like = [
   }
 ]
 
-userKey = Object.values(users0)
-userNames = []
+const userKey = Object.values(users0)
+let userNames = []
 for (let i = 0; i < userKey.length; i++) {
   userNames.push(userKey[i].username)
 }
 
-productKey = Object.values(products)
-productNames = []
+const productKey = Object.values(products)
+let productNames = []
 for (let i = 0; i < productKey.length; i++) {
   productNames.push(productKey[i].name)
 }
@@ -296,7 +291,7 @@ const signIn = () => {
       console.log('err')
       return 1
     } else {
-      targetIndex = userNames.indexOf(result.username)
+      const targetIndex = userNames.indexOf(result.username)
       if (result.password == users0[targetIndex].password) {
         users0[targetIndex].isLoggedIn = true
         console.log("sign in success")
@@ -314,7 +309,7 @@ const rateProduct = () => {
       console.log('err')
       return 1
     } else {
-      targetIndex = productNames.indexOf(result.product)
+      const targetIndex = productNames.indexOf(result.product)
       let arr = products[targetIndex].ratings
       arr.push({})
       arr[arr.length - 1].userId = result.userId
@@ -343,7 +338,7 @@ const likeProduct = () => {
       console.log('err')
       return 1
     } else {
-      targetIndex = productNames.indexOf(res.product)
+      const targetIndex = productNames.indexOf(res.product)
       let likeList = products[targetIndex].likes
       if (!likeList.includes(res.userId)) {
         likeList.push(res.userId)
