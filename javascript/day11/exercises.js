@@ -168,4 +168,4 @@ copyPerson.skills.dataBase.push({
 });
 copyPerson.skills.dataScience.push('SQL');
 
-console.log(JSON.stringify(copyPerson));
+console.log(JSON.stringify(copyPerson, undefined, 4));

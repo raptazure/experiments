@@ -1,5 +1,9 @@
 // @ts-check
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 /* Destructuring */
 const numbers = [1, 2, 3];
 let [numOne, numTwo, numThree] = numbers;
