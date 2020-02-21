@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Giving feedback using blur event</h1>
+  <label for="">Say
+    <input type="text" id="mass" placeholder="say something" />
+  </label>
+  <p></p>
+
+  <script>
+    // In contrast to input or change, the blur event occur when the input field is not on focus.
+    const input = document.querySelector('input');
+    const p = document.querySelector('p');
+
+    input.addEventListener('blur', (e) => {
+      p.textContent = 'Field is required';
+      p.style.color = 'red';
+    });
+  </script>
+</body>
+
+</html>

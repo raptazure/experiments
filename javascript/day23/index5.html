@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Body Mass Index Calculator</h1>
+  <label for="">Mass
+    <input type="text" id="mass" placeholder="Mass in Kilogram" />
+  </label>
+  <label for="">Height
+    <input type="text" id="height" placeholder="Height in meters" />
+  </label>
+  <button>Calculate BMI</button>
+
+  <script>
+    const mass = document.querySelector('#mass');
+    const height = document.querySelector('#height');
+    const button = document.querySelector('button');
+
+    let bmi;
+    button.addEventListener('click', () => {
+      bmi = mass.value / height.value ** 2;
+      alert(`your bmi is ${bmi.toFixed(2)}`);
+      console.log(bmi);
+    });
+  </script>
+</body>
+
+</html>
