@@ -1,0 +1,132 @@
+body {
+  font-family: tahoma;
+  color: #282828;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  transition: all .4s;
+  border: rgb(0, 0, 0, .3) 1px solid;
+  box-shadow: rgb(0, 0, 0, .3) 3px 3px 5px;
+  padding: 3px;
+  position: relative;
+  bottom: 0;
+}
+
+a:hover {
+  color: #16C0B0;
+  text-decoration: underline;
+  padding: 6px;
+  bottom: 4px;
+  box-shadow: rgb(0, 0, 0, .3) 5px 5px 10px;
+}
+
+p {
+  font-family: cursive;
+}
+
+li {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.nav-bar {
+  background: linear-gradient(-90deg, #84CF6A, #16C0B0);
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.product {
+  display: flex;
+  flex-flow: wrap;
+  padding: 1rem;
+}
+
+img {
+  border: 1px solid #d8d8d8;
+  width: 70%;
+  margin: 40px;
+  box-shadow: 0px .5px 1px #d8d8d8;
+}
+
+.product-image {
+  width: 80%;
+}
+
+.product-image,
+.product-info {
+  margin-top: 10px;
+  width: 50%;
+}
+
+.color-box {
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+}
+
+.cart {
+  margin: 30px;
+  float: right;
+  border: 1px solid #d8d8d8;
+  padding: 5px 20px;
+}
+
+button {
+  margin-top: 30px;
+  border: none;
+  background-color: #1E95EA;
+  color: white;
+  height: 40px;
+  width: 100px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.disabledButton {
+  background-color: #d8d8d8;
+  cursor: not-allowed;
+}
+
+.review-form {
+  width: 400px;
+  padding: 20px;
+  margin: 40px;
+  border: 1px solid #d8d8d8;
+}
+
+input {
+  width: 100%;
+  height: 25px;
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: 60px;
+}
+
+.tab {
+  margin-left: 20px;
+  cursor: pointer;
+  border-bottom: #16C0B0 1px solid;
+  padding-bottom: 5px;
+  transition: all .4s;
+  position: relative;
+  left: 20px;
+}
+
+.activeTab {
+  color: #16C0B0;
+}
+
+.out-of-stock {
+  text-decoration: line-through;
+}
+
+.reviews {
+  position: relative;
+  top: 20px;
+  left: 30px;
+}

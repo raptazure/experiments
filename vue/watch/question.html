@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="watch-example">
+    <p>
+      <label for="">
+        Ask a yes/no question:
+        <input v-model="question">
+      </label>
+    </p>
+    <p>{{ answer }}</p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"
+    integrity="sha384-+jvb+jCJ37FkNjPyYLI3KJzQeD8pPFXUra3B/QJFqQ3txYrUPIP1eOfxK4h3cKZP" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"
+    integrity="sha384-KzHHKIkXudehITxaQALuCXtYXUOD/QuY8biWeGA+/YA/966dQCCELdeisP29ONw5" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"
+    integrity="sha384-c/qp0C6AiVcAVXpY5oTmXZWAeDwawG+1nGEXp3uXGTnZWSPyZfKoDQEJJd0c13Im" crossorigin="anonymous">
+  </script>
+  <script src="question.js"></script>
+</body>
+
+</html>
