@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tree View</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <p>(You can double click on an item to turn it into a folder.)</p>
+
+  <!-- the demo root element -->
+  <ul id="demo">
+    <tree-item class="item" :item="treeData" @make-folder="makeFolder" @add-item="addItem"></tree-item>
+  </ul>
+
+</body>
+
+</html>
