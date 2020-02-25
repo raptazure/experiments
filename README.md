@@ -26,6 +26,7 @@
 ### JavaScript Topics
 
 - [Code](https://github.com/raptazure/love-py-and-js/tree/master/javascript-topics)
+- [Slides](https://github.com/raptazure/code-notes/blob/master/javascript-topics/slides.pdf)
 - [Original repo](https://github.com/jonasschmedtmann/complete-javascript-course)
 
 ### TypeScript
