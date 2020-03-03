@@ -19,13 +19,13 @@ new Vue({
   },
   watch: {
     sides: function (newSides, oldSides) {
-      let sidesDifference = newSides - oldSides
+      let sidesDifference = newSides - oldSides;
       if (sidesDifference > 0) {
         for (let i = 1; i <= sidesDifference; i++) {
           this.stats.push(this.newRandomValue());
         }
       } else {
-        let absoluteSidesDifference = Math.abs(sidesDifference)
+        let absoluteSidesDifference = Math.abs(sidesDifference);
         for (let i = 1; i <= absoluteSidesDifference; i++) {
           this.stats.shift();
         }
@@ -51,7 +51,7 @@ new Vue({
       let vm = this;
       this.stats = this.stats.map(function () {
         return vm.newRandomValue();
-      })
+      });
     },
     newRandomValue: function () {
       return Math.ceil(this.minRadius + Math.random() * (100 - this.minRadius));
