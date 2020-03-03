@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="app">
+    <svg width="200" height="200">
+      <polygon :points="points"></polygon>
+    </svg>
+    <label>Sides: {{ sides }}</label>
+    <input type="range" min="3" max="500" v-model.number="sides">
+    <label>Minimum Radius: {{ minRadius }}%</label>
+    <input type="range" min="0" max="90" v-model.number="minRadius">
+    <label>Update Interval: {{ updateInterval }} milliseconds</label>
+    <input type="range" min="10" max="2000" v-model.number="updateInterval">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenLite.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>

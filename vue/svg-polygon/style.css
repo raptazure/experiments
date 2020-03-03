@@ -1,0 +1,16 @@
+svg {
+  position: relative;
+  left: 8%;
+  display: block;
+  margin-bottom: 15px;
+}
+
+polygon {
+  fill: seagreen;
+}
+
+input[type="range"] {
+  display: block;
+  width: 45%;
+  margin-bottom: 15px;
+}
