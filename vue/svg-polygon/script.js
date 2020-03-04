@@ -2,12 +2,8 @@ new Vue({
   el: '#app',
   data: function () {
     let defaultSides = 10;
-    let stats = Array.apply(null, {
-        length: defaultSides
-      })
-      .map(function () {
-        return 100
-      });
+    let stats = Array(10);
+    stats.fill(100);
     return {
       stats: stats,
       points: generatePoints(stats),
