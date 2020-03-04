@@ -2,7 +2,7 @@ new Vue({
   el: '#app',
   data: function () {
     let defaultSides = 10;
-    let stats = Array(10);
+    let stats = Array(defaultSides);
     stats.fill(100);
     return {
       stats: stats,
