@@ -1,23 +1,24 @@
-const happyBirthday = new Promise((pisces, feelings) => {
+"use strict";
+var happyBirthday = new Promise(function (pisces, feelings) {
     pisces('creation and intuition...');
 })
-    .then(heart => {
+    .then(function (heart) {
     console.log(heart);
     return 'Look inside with lucidity...';
 })
-    .then(past => {
+    .then(function (past) {
     console.log(past);
     return 'Cherish what you have...';
 })
-    .then(present => {
+    .then(function (present) {
     console.log(present);
     return 'Carry on what you love...';
 })
-    .then(future => {
+    .then(function (future) {
     console.log(future);
     return '∞';
 })
-    .catch(sadness => {
+    .catch(function (sadness) {
     return 'Just let it go...';
 });
 //# sourceMappingURL=19.js.map
