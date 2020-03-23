@@ -30,7 +30,6 @@ function getValue(value) {
 function error(message) {
     throw new Error(message);
 }
-var empty = [];
 var list0 = [1, 2, 3];
 var list1 = [1, 2, 3];
 var x;

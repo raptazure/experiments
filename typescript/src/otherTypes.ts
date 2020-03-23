@@ -48,7 +48,7 @@ function error(message: string): never {
 }
 
 // 空数组，而且永远是空的
-const empty: never[] = [];
+// const empty: never[] = [];
 
 const list0: Array<number> = [1, 2, 3];
 const list1: number[] = [1, 2, 3];

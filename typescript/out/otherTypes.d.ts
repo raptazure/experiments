@@ -5,7 +5,6 @@ declare let value2: any;
 declare let value: unknown;
 declare function getValue(value: unknown): string;
 declare function error(message: string): never;
-declare const empty: never[];
 declare const list0: Array<number>;
 declare const list1: number[];
 declare let x: [string, number];
