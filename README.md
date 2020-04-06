@@ -1,7 +1,7 @@
 ### Learn Python3 The Hard Way
 
-- [Code](https://github.com/Raptazure/love-py-and-js/tree/master/learn-python-the-hard-way)
-- [Book](https://github.com/Raptazure/love-py-and-js/blob/master/learn-python-the-hard-way/AW.Learn.Python.3.the.Hard.Way.pdf)
+- [Code](https://github.com/raptazure/love-py-and-js/tree/master/learn-python-the-hard-way)
+- [Book](https://github.com/raptazure/love-py-and-js/blob/master/learn-python-the-hard-way/AW.Learn.Python.3.the.Hard.Way.pdf)
 - [Related videos](https://www.bilibili.com/video/av25675370)
 
 ### Python Notes
@@ -31,17 +31,22 @@
 
 ### TypeScript
 
-- [Code](https://github.com/Raptazure/love-py-and-js/tree/master/typescript/src)
+- [Code](https://github.com/raptazure/love-py-and-js/tree/master/typescript/src)
 - [Book](https://github.com/basarat/typescript-book)
-- [Topics](https://github.com/Raptazure/love-py-and-js/tree/master/typescript/topics)
+- [Topics](https://github.com/raptazure/love-py-and-js/tree/master/typescript/topics)
 - [Official Docs](https://www.typescriptlang.org/docs/home.html)
 
 ### Vue.js
 
-- [Code](https://github.com/Raptazure/code-notes/tree/master/vue)
+- [Code](https://github.com/raptazure/code-notes/tree/master/vue)
 - [Guide](https://vuejs.org/v2/guide/)
 
 ### Rust
 
-- [Code](https://github.com/Raptazure/code-notes/tree/master/rust/src)
+- [Code](https://github.com/raptazure/code-notes/tree/master/rust/src)
 - [Learn](https://www.rust-lang.org/learn)
+
+### C++
+
+- [Topics](https://github.com/raptazure/code-notes/tree/master/cpp/topics)
+- [Learn](https://www.programiz.com/cpp-programming)
