@@ -44,7 +44,7 @@
 ```cpp
 // C++ program to demonstrate implementation of Inheritance 
    
-#include <bits/stdc++.h> // 一只万能头函数，考试还是不要写这个 = =
+#include <bits/stdc++.h> // 一只万能头文件，考试还是不要写这个 = =
 using namespace std; 
   
 //Base class 
@@ -473,7 +473,7 @@ int main()
   // p2.x = 10, p2.y = 15 
   ```
 
-关于拷贝复制函数的Q & A：来自 `Geekforgeeks`
+关于拷贝构造函数的Q & A：来自 `Geekforgeeks`
   > **啥时候调用？**
   >
   > In C++, a Copy Constructor may be called in following cases:
