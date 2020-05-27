@@ -49,4 +49,4 @@
 ### C++
 
 - [Topics](https://github.com/raptazure/code-notes/tree/master/cpp/topics)
-- [Learn](https://www.programiz.com/cpp-programming)
+- [Notes](https://github.com/raptazure/code-notes/tree/master/cpp)
