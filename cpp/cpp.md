@@ -63,19 +63,19 @@ class Child : public Parent
   
 //main function 
 int main()  
-   { 
+{ 
        
-        Child obj1; 
-           
-        // An object of class child has all data members 
-        // and member functions of class parent 
-        obj1.id_c = 7; 
-        obj1.id_p = 91; 
-        cout << "Child id is " <<  obj1.id_c << endl; 
-        cout << "Parent id is " <<  obj1.id_p << endl; 
-          
-        return 0; 
-   }  
+    Child obj1; 
+        
+    // An object of class child has all data members 
+    // and member functions of class parent 
+    obj1.id_c = 7; 
+    obj1.id_p = 91; 
+    cout << "Child id is " <<  obj1.id_c << endl; 
+    cout << "Parent id is " <<  obj1.id_p << endl; 
+        
+    return 0; 
+}  
 ```
 
 关于 `public, private, protected`：
