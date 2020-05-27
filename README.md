@@ -49,4 +49,4 @@
 ### C++
 
 - [Topics](https://github.com/raptazure/code-notes/tree/master/cpp/topics)
-- [Notes](https://github.com/raptazure/code-notes/tree/master/cpp)
+- [Notes](https://github.com/raptazure/code-notes/tree/master/cpp/cpp.md)

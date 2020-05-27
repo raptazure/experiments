@@ -1,4 +1,4 @@
-**一枚菜鸡的复习笔记** by Raptazure
+**复习笔记** by Raptazure
 
 - [x] 继承
 
