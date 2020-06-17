@@ -3,7 +3,6 @@
 
 pub fn run() {
     let mut hello = String::from("Hello");
-
     // Get length
     println!("length: {}", hello.len());
 
