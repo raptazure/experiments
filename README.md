@@ -43,7 +43,7 @@
 
 ### Rust
 
-- [Code](https://github.com/raptazure/code-notes/tree/master/rust/src)
+- [Code](https://github.com/raptazure/code-notes/tree/master/rust)
 - [Learn](https://www.rust-lang.org/learn)
 
 ### C++
