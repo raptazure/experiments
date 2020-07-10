@@ -1,4 +1,5 @@
 use std::{fs::File, io::ErrorKind};
+mod guess;
 mod handle1;
 
 fn main() {
@@ -16,7 +17,10 @@ fn main() {
         },
     };
 
-    handle1::read_username_from_file().expect("err!");
+    println!("{:?}", handle1::read_username_from_file().expect("err!"));
+
+    let num = guess::Guess::new(3);
+    println!("{}", guess::Guess::value(&num));
 }
 
 // fn main() {
