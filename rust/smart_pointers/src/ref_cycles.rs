@@ -87,6 +87,8 @@ pub fn tree() {
         println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
     }
 
+    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
+
     println!(
         "leaf strong = {}, weak = {}",
         Rc::strong_count(&leaf),
