@@ -1,6 +1,8 @@
 mod blog;
 mod gui;
 use blog::Post;
+mod blog_v2;
+use blog_v2::Post as PostV2;
 use gui::{Button, Draw, Screen};
 
 struct SelectBox {
@@ -48,4 +50,14 @@ fn main() {
 
     post.approve();
     assert_eq!("I ate a salad for lunch today", post.content());
+
+    let mut post_v2 = PostV2::new();
+
+    post_v2.add_text("I ate a salad for lunch today");
+
+    let post_v2 = post_v2.request_review();
+
+    let post_v2 = post_v2.approve();
+
+    assert_eq!("I ate a salad for lunch today", post_v2.content());
 }
