@@ -56,7 +56,11 @@ fn main() {
     post_v2.add_text("I ate a salad for lunch today");
 
     let post_v2 = post_v2.request_review();
-
+    let post_v2 = post_v2.reject();
+    let post_v2 = post_v2.request_review();
+    let post_v2 = post_v2.approve();
+    let post_v2 = post_v2.reject();
+    let post_v2 = post_v2.approve();
     let post_v2 = post_v2.approve();
 
     assert_eq!("I ate a salad for lunch today", post_v2.content());
