@@ -1,0 +1,2 @@
+- [Slides](https://github.com/raptazure/playground/blob/master/javascript-topics/slides.pdf)
+- [Original Repository](https://github.com/jonasschmedtmann/complete-javascript-course)
