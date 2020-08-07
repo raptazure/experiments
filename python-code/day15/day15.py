@@ -1,5 +1,5 @@
 ''' Python Error Types '''
-# https://github.com/Raptazure/love-py-and-js/blob/master/python-notes/Python-Basics06.md
+# https://github.com/Raptazure/playground/blob/master/python-notes/Python-Basics06.md
 
 # >>> import math
 # >>> math.PI
