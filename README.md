@@ -6,8 +6,8 @@
 ### Python
 
 - [Learn Python3 The Hard Way](https://github.com/raptazure/playground/tree/master/learn-python-the-hard-way)
-- [Python Notes](https://github.com/raptazure/playground/blob/master/python-notes/)
 - [30 Days of Python](https://github.com/raptazure/playground/tree/master/python-code)
+- [Python Notes](https://github.com/raptazure/playground/blob/master/python-notes/)
   - [Introduction](https://github.com/raptazure/playground/blob/master/python-notes/python-Introduction.md)
   - [Sequence](https://github.com/raptazure/playground/blob/master/python-notes/Python-Basics02.md)
   - [Control Flow](https://github.com/raptazure/playground/blob/master/python-notes/Python-Basics03.md)
