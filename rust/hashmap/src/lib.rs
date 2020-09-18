@@ -181,7 +181,7 @@ where
         for (key, value) in self.buckets.iter_mut().flat_map(|bucket| bucket.drain(0..)) {
             let mut hasher = DefaultHasher::new();
             key.hash(&mut hasher);
-            let bucket: usize = (hasher.finish() % new_buckets.len() as u64) as usize;
+            let bucket = (hasher.finish() % new_buckets.len() as u64) as usize;
             new_buckets[bucket].push((key, value));
         }
         mem::replace(&mut self.buckets, new_buckets);
@@ -196,11 +196,11 @@ pub struct Iter<'a, K: 'a, V: 'a> {
 
 impl<'a, K, V> Iterator for Iter<'a, K, V> {
     type Item = (&'a K, &'a V);
-    fn next(&mut self) -> Option<(Self::Item)> {
+    fn next(&mut self) -> Option<Self::Item> {
         loop {
             match self.map.buckets.get(self.bucket) {
                 Some(bucket) => {
-                    match bucket.get(self.bucket) {
+                    match bucket.get(self.at) {
                         Some(&(ref k, ref v)) => {
                             // move along self.at  and self.bucket
                             self.at += 1;
@@ -289,6 +289,8 @@ mod tests {
     #[test]
     fn insert() {
         let mut map = HashMap::new();
+        assert_eq!(map.len(), 0);
+        assert!(map.is_empty());
         map.insert("foo", 42);
         assert_eq!(map.get(&"foo"), Some(&42));
     }
@@ -298,6 +300,48 @@ mod tests {
         let mut map = HashMap::new();
         map.insert("foo", 42);
         assert_eq!(map.remove(&"foo"), Some(42));
+        assert_eq!(map.len(), 0);
+        assert!(map.is_empty());
         assert_eq!(map.get(&"foo"), None);
+    }
+
+    #[test]
+    fn iter() {
+        let mut map = HashMap::new();
+        map.insert("foo", 42);
+        map.insert("bar", 43);
+        map.insert("baz", 142);
+        map.insert("quox", 7);
+        for (&k, &v) in &map {
+            match k {
+                "foo" => assert_eq!(v, 42),
+                "bar" => assert_eq!(v, 43),
+                "baz" => assert_eq!(v, 142),
+                "quox" => assert_eq!(v, 7),
+                _ => unreachable!(),
+            }
+        }
+        assert_eq!((&map).into_iter().count(), 4);
+
+        let mut items = 0;
+        for (k, v) in map {
+            match k {
+                "foo" => assert_eq!(v, 42),
+                "bar" => assert_eq!(v, 43),
+                "baz" => assert_eq!(v, 142),
+                "quox" => assert_eq!(v, 7),
+                _ => unreachable!(),
+            }
+            items += 1;
+        }
+        assert_eq!(items, 4);
+    }
+
+    #[test]
+    fn empty_hashmap() {
+        let mut map = HashMap::<&str, &str>::new();
+        assert_eq!(map.contains_key("key"), false);
+        assert_eq!(map.get("key"), None);
+        assert_eq!(map.remove("key"), None);
     }
 }
