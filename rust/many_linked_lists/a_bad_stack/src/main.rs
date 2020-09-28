@@ -1,4 +1,0 @@
-mod first;
-
-fn main() {
-}

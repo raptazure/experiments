@@ -1,4 +1,4 @@
-// https://rust-unofficial.github.io/too-many-lists
+// A Bad Singly-Linked Stack
 
 // List a = Empty | Elem a (List a)  sum type -> enum
 // But functional programming community's solution isn't working here
@@ -9,6 +9,7 @@
 //     Cons(T, Box<List<T>>),
 //     Nil,
 // }
+
 use std::mem;
 
 pub struct List {
