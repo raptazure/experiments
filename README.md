@@ -1,6 +1,7 @@
 # Playground
 
 - [Rust](https://github.com/raptazure/playground/tree/master/rust)
+- [Elixir](https://github.com/raptazure/playground/tree/master/elixir)
 - [OCaml](https://github.com/raptazure/playground/tree/master/ocaml)
 - [Haskell](https://github.com/raptazure/playground/tree/master/haskell)
 - [JavaScript](https://github.com/raptazure/playground/tree/master/javascript)
