@@ -20,6 +20,6 @@ defmodule SchoolBasics.MixProject do
 
   # Run "mix help deps" to learn about dependencies.
   def deps do
-    [{:earmark, "~> 1.2", only: :dev}, {:ex_doc, "~> 0.19", only: :dev}]
+    [{:earmark, "~> 1.2", only: :dev}, {:ex_doc, "~> 0.19", only: :dev}, {:tzdata, "~> 1.0.4"}]
   end
 end
