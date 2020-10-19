@@ -1,6 +1,6 @@
-defmodule School do
+defmodule SchoolBasics do
   @moduledoc """
-  Documentation for `School`.
+  Documentation for `SchoolBasics`.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule School do
 
   ## Examples
 
-      iex> School.hello()
+      iex> SchoolBasics.hello()
       :world
 
   """
