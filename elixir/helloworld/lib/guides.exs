@@ -75,3 +75,12 @@ odd? = &(rem(&1, 2) != 0)
 |> Stream.map(&(&1 * 3))
 |> Stream.filter(odd?)
 |> Enum.sum()
+
+send(self(), {:h, "w"})
+
+receive do
+  {:h, msg} -> msg
+after
+  1000 ->
+    "nothing after 1s"
+end
