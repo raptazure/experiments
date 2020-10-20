@@ -5,6 +5,7 @@ defmodule SchoolAdvanced.MixProject do
     [
       app: :school_advanced,
       version: "0.1.0",
+      escript: escript(),
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       deps: deps()
@@ -25,5 +26,9 @@ defmodule SchoolAdvanced.MixProject do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
       {:png, github: "yuce/png"}
     ]
+  end
+
+  defp escript do
+    [main_module: ExampleApp.CLI]
   end
 end
