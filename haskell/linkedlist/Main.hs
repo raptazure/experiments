@@ -1,10 +1,13 @@
 module MyList where
 
-data MyList a = Cons a (MyList a) 
-                | MyNil deriving (Show, Eq)
+data MyList a
+  = Cons a (MyList a)
+  | MyNil
+  deriving (Show, Eq)
+
 {-
  A simple linked list module
-  Some examples: 
+  Some examples:
 	mylist = (Cons 10 (Cons 99 (Cons 11 (Cons 1 MyNil))))
 	myHead myList                       # => 10
 	myTail myList                       # => Cons 99 (Cons 11 (Cons 1 MyNil))
@@ -18,21 +21,21 @@ data MyList a = Cons a (MyList a)
 
 myHead :: MyList a -> a
 myHead l = case l of
-        Cons a _ -> a
+  Cons a _ -> a
 
 myTail :: MyList a -> MyList a
 myTail MyNil = MyNil
 myTail l = case l of
-        Cons _ a -> a
+  Cons _ a -> a
 
 myIndex :: Int -> MyList a -> a
 myIndex 0 xs = myHead xs
 myIndex x xs = myHead (myIndexTail x xs)
-    where 
-        myIndexTail 0 xs = xs
-        myIndexTail i xs = myIndexTail (i-1) (myTail xs)
+  where
+    myIndexTail 0 xs = xs
+    myIndexTail i xs = myIndexTail (i -1) (myTail xs)
 
-myLength :: MyList a -> Int 
+myLength :: MyList a -> Int
 myLength MyNil = 0
 myLength xs = 1 + (myLength (myTail xs))
 
@@ -53,9 +56,9 @@ myAppend x xs = myInsert (myHead xs) (myAppend x (myTail xs))
 
 myToList :: MyList a -> [a]
 myToList MyNil = []
-myToList (Cons a l) = a:(myToList l)
+myToList (Cons a l) = a : (myToList l)
 
-myFromList :: [a] -> MyList a 
+myFromList :: [a] -> MyList a
 myFromList [] = MyNil
 myFromList l = Cons (head l) (myFromList (tail l))
 

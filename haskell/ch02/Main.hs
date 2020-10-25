@@ -1,20 +1,21 @@
-doubleSmallNumber x = if x > 100
-                      then x
-                      else  x*2
+doubleSmallNumber x =
+  if x > 100
+    then x
+    else x * 2
 
 doubleSmallNumber' x = (if x > 100 then x else x * 2) + 1
 
--- [1,2,3,4] ++ [9,10,11,12]  
--- [9.4,33.2,96.2,11.2,23.25] !! 1 
+-- [1,2,3,4] ++ [9,10,11,12]
+-- [9.4,33.2,96.2,11.2,23.25] !! 1
 -- 'A':" SMALL CAT"
--- head [5,4,3,2,1] 
--- tail [5,4,3,2,1] 
--- last [5,4,3,2,1]  
+-- head [5,4,3,2,1]
+-- tail [5,4,3,2,1]
+-- last [5,4,3,2,1]
 -- init [5,4,3,2,1]
 -- take 3 [5,4,3,2,1]
 -- drop 3 [8,4,2,1,5,6]
--- minimum [8,4,2,1,5,6] 
--- 4 `elem` [3,4,5,6] 
+-- minimum [8,4,2,1,5,6]
+-- 4 `elem` [3,4,5,6]
 -- [2,4..20]
 -- [20,19..1]
 -- take 10 (cycle [1,2,3])
@@ -30,7 +31,8 @@ boomBangs xs = [if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]
 -- [adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns]
 
 length' xs = sum [1 | _ <- xs]
-removeNonUppercase st = [c | c <- st, c `elem` ['A'..'Z']]
+
+removeNonUppercase st = [c | c <- st, c `elem` ['A' .. 'Z']]
 
 -- let xxs = [[1,3,5,2,3,1,2,4,5],[1,2,3,4,5,6,7,8,9],[1,2,4,2,1,6,3,1,3,2,3,6]]
 -- [ [ x | x <- xs, even x ] | xs <- xxs]
