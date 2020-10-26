@@ -78,3 +78,97 @@ numLongChains = length (filter isLong (map chain [1 .. 100]))
 
 -- let listOfFuns = map (*) [0..]
 -- (listOfFuns !! 4) 5
+
+numLongChains' :: Int
+numLongChains' = length (filter (\xs -> length xs > 15) (map chain [1 .. 10]))
+
+-- zipWith (\a b -> (a * 30 + 3) / b) [5,4,3,2,1] [1,2,3,4,5]
+
+addThree :: (Num a) => a -> a -> a -> a
+addThree = \x -> \y -> \z -> x + y + z
+
+flip'' :: (a -> b -> c) -> b -> a -> c
+flip'' f = \x y -> f y x
+
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (\acc x -> acc + x) 0 xs
+
+sum'' :: Num a => [a] -> a
+sum'' = foldl (+) 0
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' y ys = foldl (\acc x -> if x == y then True else acc) False ys
+
+map'' :: (a -> b) -> [a] -> [b]
+map'' f xs = foldr (\x acc -> f x : acc) [] xs
+
+-- using foldr because of slower ++ operation
+-- foldr is easier to deal with infinite lists
+
+map''' :: (a -> b) -> [a] -> [b]
+map''' f xs = foldl (\acc x -> acc ++ [f x]) [] xs
+
+maximum' :: (Ord a) => [a] -> a
+maximum' = foldl1 (\x acc -> if x > acc then x else acc)
+
+reverse' :: [a] -> [a]
+reverse' = foldl (\acc x -> x : acc) []
+
+reverse'' :: [a] -> [a]
+reverse'' = foldl (flip (:)) []
+
+product' :: (Num a) => [a] -> a
+product' = foldl1 (*)
+
+head' :: [a] -> a
+head' = foldl1 (\x _ -> x)
+
+last' :: [a] -> a
+last' = foldl1 (\_ x -> x)
+
+-- scanr (+) 0 [3,5,2,1]
+-- scanl1 (\acc x -> if x > acc then x else acc) [3,4,5,3,7,9,2,1]
+-- scanl (flip (:)) [] [3,2,1]
+
+sqrtSums :: Int
+sqrtSums = length (takeWhile (< 1000) (scanl1 (+) (map sqrt [1 ..]))) + 1
+
+-- ($) :: (a -> b) -> a -> b
+-- f $ x = f x
+
+-- sum (map sqrt [1..130])
+-- sum $ sqrt [1..130]
+-- sum (filter (> 10) (map (*2) [2..10])
+-- sum $ filter (> 10) $ map (*2) [2..10]
+-- map ($ 3) [(4 +), (10 *), (^ 2), sqrt]
+
+-- (.) :: (b -> c) -> (a -> b) -> a -> c
+-- f . g = \x -> f (g x)
+
+-- map (negate . abs) [5,-3,-6,7,-3,2,-19,24]
+
+-- map (\xs -> negate (sum (tail xs))) [[1 .. 5], [3 .. 6], [1 .. 7]]
+-- map (negate . sum . tail) [[1 .. 5], [3 .. 6], [1 .. 7]]
+
+-- sum (replicate 5 (max 6.7 8.9))
+-- sum . replicate 5 . max 6.7 $ 8.9
+
+-- replicate 100 (product (map (* 3) (zipWith max [1, 2, 3, 4, 5] [4, 5, 6, 7, 8])))
+-- replicate 100 . product . map (* 3) . zipWith max [1, 2, 3, 4, 5] $ [4, 5, 6, 7, 8]
+
+sum''' :: (Num a) => [a] -> a
+sum''' = foldl (+) 0
+
+fn = ceiling . negate . tan . cos . max 50
+
+-- oddSquareSum :: Integer
+-- oddSquareSum = sum (takeWhile (<10000) (filter odd (map (^2) [1..])))
+
+-- oddSquareSum :: Integer
+-- oddSquareSum =
+--     let oddSquares = filter odd $ map (^2) [1..]
+--         belowLimit = takeWhile (<10000) oddSquares
+--     in  sum belowLimit
+
+oddSquareSum :: Integer
+oddSquareSum = sum . takeWhile (< 10000) . filter odd . map (^ 2) $ [1 ..]
