@@ -39,3 +39,5 @@ let rec rev list =
 (* 6. finds out whether a list is a palindrome *)
 let is_palindrome list = 
   list = rev list
+
+(* 7. flatten a nested list structure *)
