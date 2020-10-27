@@ -1,13 +1,12 @@
 module Main where
 
-import Geometry
-import GeometryFolder.Cube as Cube
+-- import Geometry
+import GeometryFolder.Cube as Cube (volume)
 
-myIntToStr :: Float -> String
-myIntToStr x
-    | x < 3     = show x ++ " is less than three"
-    | otherwise = show x ++ " is bigger than three"
+myFloatToStr :: Float -> String
+myFloatToStr x
+  | x < 3 = show x ++ " is less than three"
+  | otherwise = show x ++ " is bigger than three"
 
-
-main :: IO()
-main = putStr $ myIntToStr $ Cube.volume 3
+main :: IO ()
+main = putStr $ myFloatToStr $ Cube.volume 3
