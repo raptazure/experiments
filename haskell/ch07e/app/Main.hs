@@ -1,7 +1,7 @@
 module Main where
 
-import Geometry
-import GeometryFolder.Cube as Cube
+-- import Geometry
+import GeometryFolder.Cube as Cube (volume)
 
 myFloatToStr :: Float -> String
 myFloatToStr x
