@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d50a58fc8fbec4d373eb4e938a2add2ea88e30eeab9ff2ab8576fb3f45435bf7
+-- hash: ec0e54f050b49663523359453df830caaad4b46ee8b0a019835fcf6882d7a2a6
 
 name:           ch11
 version:        0.1.0.0
@@ -28,6 +28,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Monoid
       Zip
   other-modules:
       Paths_ch11
