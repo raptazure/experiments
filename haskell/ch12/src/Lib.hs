@@ -256,3 +256,42 @@ canReachIn3 :: KnightPos -> KnightPos -> Bool
 canReachIn3 start end = end `elem` in3 start
 
 canReach = (6, 2) `canReachIn3` (6, 1)
+
+{- Monad Laws -}
+
+-- left identity
+-- `return x >>= f` == `f x`
+
+-- right identity
+-- `m >>= return` == `m`
+
+-- associativity
+-- `(m >>= f) >>= g` == `m >>= (\x -> f x >>= g)`
+
+exp1 = return (0, 0) >>= landRight 2 >>= landLeft 2 >>= landRight 2
+
+exp1' =
+  return (0, 0)
+    >>= ( \x ->
+            landRight 2 x
+              >>= ( \y ->
+                      landLeft 2 y
+                        >>= ( \z ->
+                                landRight 2 z
+                            )
+                  )
+        )
+
+-- composition
+(.) :: (b -> c) -> (a -> b) -> (a -> c)
+f . g = (\x -> f (g x))
+
+-- monadic function composition
+(<=<) :: (Monad m) => (b -> m c) -> (a -> m b) -> (a -> m c)
+f <=< g = (\x -> g x >>= f)
+
+f x = [x, - x]
+
+g x = [x * 3, x * 2]
+
+h = f <=< g
