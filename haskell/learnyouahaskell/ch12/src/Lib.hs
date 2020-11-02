@@ -257,6 +257,12 @@ canReachIn3 start end = end `elem` in3 start
 
 canReach = (6, 2) `canReachIn3` (6, 1)
 
+inMany :: Int -> KnightPos -> [KnightPos]
+inMany x start = return start >>= foldr (<=<) return (replicate x moveKnight)
+
+canReachIn :: Int -> KnightPos -> KnightPos -> Bool
+canReachIn x start end = end `elem` inMany x start
+
 {- Monad Laws -}
 
 -- left identity
