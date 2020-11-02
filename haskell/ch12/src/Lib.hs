@@ -261,9 +261,13 @@ canReach = (6, 2) `canReachIn3` (6, 1)
 
 -- left identity
 -- `return x >>= f` == `f x`
+-- return 3 >>= (\x -> Just (x+100000))
+-- (\x -> Just (x+100000)) 3
 
 -- right identity
 -- `m >>= return` == `m`
+-- Just "move on up" >>= (\x -> return x)
+-- [1,2,3,4] >>= (\x -> return x)
 
 -- associativity
 -- `(m >>= f) >>= g` == `m >>= (\x -> f x >>= g)`
@@ -295,3 +299,5 @@ f x = [x, - x]
 g x = [x * 3, x * 2]
 
 h = f <=< g
+
+-- f <=< (g <=< h) should be the same as (f <=< g) <=< h. the left identity law states that for every monadic function f, f <=< return is the same as writing just f. The right identity law says that return <=< f is also no different from f. This is similar to how if f is a normal function, (f . g) . h is the same as f . (g . h), f . id is always the same as f, and id . f is also just f.
