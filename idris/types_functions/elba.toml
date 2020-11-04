@@ -1,0 +1,13 @@
+[package]
+name = "types_functions/types_functions"
+version = "0.1.0"
+authors = []
+
+[dependencies]
+
+[targets.lib]
+path = "src"
+mods = [
+    "TypesFunctions"
+]
+

@@ -1,0 +1,4 @@
+[[packages]]
+id = 'types_functions/types_functions@dir+/Users/raptazure/Code/playground/idris/types_functions'
+version = '0.1.0'
+dependencies = []
