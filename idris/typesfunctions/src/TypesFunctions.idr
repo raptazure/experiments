@@ -48,13 +48,13 @@ even (S k) = odd k where
   odd Z = False
   odd (S k) = even k
 
--- hole 
+-- -- hole
 
 even' : Nat -> Bool
 even' Z = True
 even' (S k) = ?even_rhs
 
--- first class types
+-- -- first class types
 
 isSingleton : Bool -> Type
 isSingleton True = Nat
@@ -69,22 +69,22 @@ sum True x = x
 sum False [] = 0
 sum False (x :: xs) = x + sum False xs
 
--- vectors
+-- -- vectors
 
-data Vect' : Nat -> Type -> Type where 
-  Nil : Vect' Z a
-  (::) : a -> Vect' k a -> Vect' (S k) a
+-- data Vect' : Nat -> Type -> Type where
+--   Nil : Vect' Z a
+--   (::) : a -> Vect' k a -> Vect' (S k) a
 
 -- (++) : Vect n a -> Vect m a -> Vect (n + m) a
 -- (++) Nil       ys = ys
 -- (++) (x :: xs) ys = x :: xs ++ ys
 
--- finite sets
+-- -- finite sets
 
 data Fin : Nat -> Type where
   FZ : Fin (S k)
   FS : Fin k -> Fin (S k)
 
-index : Fin n -> Vect n a -> a
-index FZ (x :: xs) = x
-index (FS k) (x :: xs) = index k xs
+-- index : Fin n -> Vect n a -> a
+-- index FZ (x :: xs) = x
+-- index (FS k) (x :: xs) = index k xs
