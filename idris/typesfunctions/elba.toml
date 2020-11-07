@@ -8,6 +8,6 @@ authors = []
 [targets.lib]
 path = "src"
 mods = [
-    "TypesFunctions"
+    "Main"
 ]
 
