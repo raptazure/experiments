@@ -3,6 +3,9 @@ module Lib
   )
 where
 
+import Data.Function (on)
+import Data.List (sort, sortBy)
+
 someFunc :: IO ()
 someFunc = putStrLn "someFunc"
 
@@ -105,3 +108,65 @@ absolute'' :: Int -> Int
 absolute'' n = case (n < 0) of
   True -> (- n)
   False -> n
+
+{- Function Composition -}
+
+example3 :: [Integer] -> [Integer]
+example3 =
+  sort
+    . filter (< 100)
+    . map (* 10)
+
+-- ex1 = f1 . f2 . f3 . f4 $ input -- with ($)
+-- ex1 = input & f1 . f2 . f3 . f4 -- with (&)
+-- ex1 = (f1 . f2 . f3 . f4) input -- with explicit parens
+
+sortSize :: [[a]] -> [[a]]
+sortSize = sortBy (compare `on` length)
+
+sorted :: [[Integer]]
+sorted = sortSize [[1, 2], [1, 2, 3], [1]]
+
+factorial :: Integer -> Integer
+factorial n = product [1 .. n]
+
+primes :: [Integer]
+primes = sieve [2 ..]
+  where
+    sieve (p : xs) = p : sieve [n | n <- xs, n `mod` p > 0]
+
+fizzbuzz :: [String]
+fizzbuzz = [fb x | x <- [1 .. 100]]
+  where
+    fb y
+      | y `mod` 15 == 0 = "FizzBuzz"
+      | y `mod` 3 == 0 = "Fizz"
+      | y `mod` 5 == 0 = "Buzz"
+      | otherwise = show y
+
+{- Typeclasses -}
+class Equal a where
+  equal :: a -> a -> Bool
+
+instance Equal Bool where
+  equal True True = True
+  equal False False = True
+  equal True False = False
+  equal False True = False
+
+data Ordering' = LT' | EQ' | GT'
+
+instance Equal Ordering' where
+  equal LT' LT' = True
+  equal EQ' EQ' = True
+  equal GT' GT' = True
+  equal _ _ = False
+
+instance (Equal a) => Equal [a] where
+  equal [] [] = True
+  equal [] ys = False
+  equal xs [] = False
+  equal (x : xs) (y : ys) = equal x y && equal xs ys
+
+instance (Equal a, Equal b) => Equal (a, b) where
+  equal (x0, x1) (y0, y1) = equal x0 y0 && equal x1 y1

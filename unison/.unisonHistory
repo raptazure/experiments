@@ -1,0 +1,5 @@
+view 3
+find : [a] -> [a]
+help
+:q
+List.map (x -> x * 10) [1,2,3,4,5,6]
