@@ -1,1 +1,0 @@
-- [Original Repository](https://github.com/Asabeneh/30DaysOfJavaScript)
