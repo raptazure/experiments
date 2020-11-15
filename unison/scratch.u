@@ -1,0 +1,44 @@
+timesTwo : Nat -> Nat
+timesTwo x = x * 2
+
+x | y = if x == 0 then y else x
+
+type Optional a = None | Some a
+
+unique type Suit = Hearts | Spades | Diamonds | Clubs
+
+type Point = { x : Nat, y : Nat }
+
+ability A p_1 p_2 where
+  Request_1 : Type_1
+  Request_2 : Type_2
+
+use .base.List
+
+oneTwo = take 2 [1,2,3]
+
+use io
+
+program : '{IO} ()
+program = 'let
+  printLine "What is your name?"
+  name = !readLine
+  printLine ("Hello, " ++ name)
+
+-- hash references
+#a0v829
+#a0v829#abcde
+##Nat
+
+∀
+
+get : forall v. {Store v} v
+put : forall v. v ->{Store v} ()
+
+> watchout
+test> watchout
+
+match 1 + 1 with
+  x@4 -> x * 2
+  y@2 -> y + 1
+  _   -> 22

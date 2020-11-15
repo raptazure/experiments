@@ -1,0 +1,36 @@
+.button {
+  padding: 12px 48px;
+  border-radius: 24px;
+  background-color: #0076ff;
+  box-shadow: 0px 5px 10px rgba(135, 167, 171, 0.5);
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+  text-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.15);
+  border-width: 0px;
+  cursor: pointer;
+}
+
+.red {
+  background-color: #ff4059;
+}
+
+.black {
+  background-color: #2e3434;
+}
+
+.secondary {
+  background: none;
+  border: 1px solid #0076ff;
+  color: #0076ff;
+}
+
+.secondary.red {
+  border: 1px solid #ff4059;
+  color: #ff4059;
+}
+
+.secondary.black {
+  border: 1px solid #2e3434;
+  color: #2e3434;
+}

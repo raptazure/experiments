@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Data Binding using input or change event</h1>
+  <label for="">Say
+    <input type="text" placeholder="say something" />
+  </label>
+  <p></p>
+
+  <script>
+    const input = document.querySelector('input');
+    const p = document.querySelector('p');
+
+    input.addEventListener('input', e => {
+      p.textContent = e.target.value;
+    });
+  </script>
+</body>
+
+</html>

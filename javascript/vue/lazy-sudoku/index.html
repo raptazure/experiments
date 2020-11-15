@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="sudoku-demo" class="demo">
+    <h1>Lazy Sudoku</h1>
+    <p>Keep hitting the shuffle button until you win.</p>
+
+    <button @click="shuffle">
+      Shuffle
+    </button>
+    <transition-group name="cell" tag="div" class="container">
+      <div v-for="cell in cells" :key="cell.id" class="cell">
+        {{ cell.number }}
+      </div>
+    </transition-group>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
+  <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

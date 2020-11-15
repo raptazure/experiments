@@ -1,0 +1,28 @@
+GET http://localhost:3000/stargazers
+
+###
+
+GET http://localhost:3000/stargazers/5e37f67c65d23e4db0b29967
+
+###
+
+POST http://localhost:3000/stargazers
+Content-Type: application/json
+
+{
+  "name": "spider-man",
+  "starRepo": "rest-api"
+}
+
+###
+
+DELETE http://localhost:3000/stargazers/5e3826941511e419fc809253
+
+###
+
+PATCH http://localhost:3000/stargazers/5e3827040cf03723382fe774
+Content-Type: application/json
+
+{
+  "name": "night-monkey"
+}

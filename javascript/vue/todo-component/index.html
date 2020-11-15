@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue"></script>
+  <script src="script.js" defer></script>
+  <title>To do</title>
+</head>
+
+<body>
+  <div id="todo-list-example">
+    <form @submit.prevent="addNewTodo">
+      <label for="new-todo"></label>
+      <input v-model="newTodoText" id="new-todo" placeholder="E.g. Meow">
+      <button>Add</button>
+    </form>
+
+    <ul>
+      <!-- 注意这里的 is="todo-item" 属性。这种做法在使用 DOM 模板时是十分必要的，因为在 <ul> 元素内只有 <li> 元素会被看作有效内容。这样做实现的效果与 <todo-item> 相同，但是可以避开一些潜在的浏览器解析错误 -->
+      <li is="todo-item" v-for="(todo, index) in todos" :key="todo.id" :title="todo.title"
+        @remove="todos.splice(index, 1)"></li>
+    </ul>
+  </div>
+</body>
+
+</html>

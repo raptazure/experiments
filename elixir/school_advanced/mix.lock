@@ -1,0 +1,3 @@
+%{
+  "png": {:git, "https://github.com/yuce/png.git", "d587509b03c804c84af7a1b8298d618e7b26fec3", []},
+}
