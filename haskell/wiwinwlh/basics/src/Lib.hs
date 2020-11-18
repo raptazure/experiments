@@ -170,3 +170,130 @@ instance (Equal a) => Equal [a] where
 
 instance (Equal a, Equal b) => Equal (a, b) where
   equal (x0, x1) (y0, y1) = equal x0 y0 && equal x1 y1
+
+{- Side Effects -}
+-- Haskell’s approach to side effects is that they are encoded in the type system.
+-- the language has various models for modeling these effects within the type system.
+-- These models range from using Monads to building algebraic models of effects that draw clear lines between effectful code and pure code.
+
+{- Records -}
+--  Uses function application syntax since record accessors are simply just functions.
+
+{- Bottoms ⊥ -}
+-- 1. undefined
+-- undefined :: a
+-- mean :: Num a => Vector a -> a mean nums = (total / count)
+--   where
+--     total = undefined
+--     count = undefined
+-- addThreeNums :: Num a => a -> a -> a -> a addThreeNums n m j = undefined
+-- f :: a -> Complicated Type f = undefined
+
+-- 2. error
+divByY :: (Num a, Eq a, Fractional a) => a -> a -> a
+divByY _ 0 = error "Divide by zero error"
+divByY dividend divisor = dividend / divisor
+
+-- 3. infinitely loop
+-- f' :: a
+-- f' = let x = x in x
+
+-- 4. A partial function that does not have exhaustive pattern matching defined
+-- data F = A | B
+-- case x of A -> ()
+-- data Foo = Foo { example1 :: Int }
+-- f = Foo {} -- Record defined with a missing field
+
+-- Extract the first element of a list, which must be non-empty.
+-- head :: [a] -> a
+-- head(x:_) =x
+-- head [] = error "Prelude.head: empty list"
+-- (!!) :: [a] -> Int -> a
+-- xs !! n | n < 0 = error "Prelude.!!: negative index"
+-- [] !! _ = error "Prelude.!!: index too large"
+-- (x : _) !! 0 = x
+-- (_ : xs) !! n = xs !! (n - 1)
+
+{- Exhaustiveness -}
+-- {-# OPTIONS_GHC -Wall #-}
+-- {-# OPTIONS_GHC -fwarn-incomplete-patterns #-}
+-- {-# OPTIONS_GHC fwarn-incomplete-uni-patterns #-}
+-- boom = \(Just a) -> something
+-- boom2 = let
+--   Just a = something
+-- boom3 = do
+--   Just a <- something
+
+{- Debugger -}
+-- λ: :set -fbreak-on-exception
+-- λ: :break 2 15
+-- λ: :trace main
+-- λ: :hist
+-- λ: :back λ: :forward
+-- -- Sets option for evaluation to stop on exception
+-- -- Sets a break point at line 2, column 15
+-- -- Run a function to generate a sequence of evaluation steps
+-- -- Step back from a breakpoint through previous evaluation steps -- Step backwards a single step at a time through the history
+-- -- Step forward a single step at a time through the history
+
+-- traceM :: (Monad m) => String -> m ()
+-- traceM string = trace string $ return ()
+
+-- traceShowM :: (Show a, Monad m) => a -> m ()
+-- traceShowM = traceM . show
+
+-- tracePrintfM :: (Monad m, PrintfArg a) => String -> a -> m ()
+-- tracePrintfM s = traceM . printf s
+
+{- Type Inference -}
+-- Mutually Recursive Binding Groups
+-- f x = const x g
+-- g y = f 'A'
+-- Polymorphic recursion
+-- data Tree a = Leaf | Bin a (Tree (a, a))
+-- size :: Tree a -> Int
+-- size Leaf = 0
+-- size (Bin _ t) = 1 + 2 * size t
+-- Monomorphism Restriction
+
+{- Type Holes -}
+-- succ' :: _ => a -> a
+
+{- Deferred Type Errors -}
+-- {-# OPTIONS_GHC -fdefer-type-errors #-}
+
+{- NameConventions -}
+-- a,b,c.. Type level variable
+-- x,y,z.. Value variables
+-- f,g,h.. Higher order function values
+-- x,y List head values xs,ys List tail values
+-- m Monadic type variable
+-- t Monad transformer variable
+-- e Exception value
+-- s Monad state value
+-- r Monad reader value
+-- t Foldable or Traversable type variable
+-- f Functor or applicative type variable
+-- mX Maybe variable
+
+{- ghcid -}
+-- ghcid --command="cabal repl" # Run cabal repl under ghcid
+-- ghcid --command="stack repl" # Run stack repl under
+-- ghcid ghcid --command="ghci baz.hs" # Open baz.hs under ghcid
+
+{- HLint -}
+{- DockerImages -}
+{- ContinuousIntegration -}
+{- Ormolu -}
+{- Haddock -}
+-- -- | Multiline documentation for the function -- f with multiple arguments.
+-- fmap :: Functor f
+--   => (a -> b) -- ^ function 
+--   -> f a -- ^ input
+--   -> f b -- ^ output
+
+{- UnsafeFunctions -}
+-- Unsafe functions exist only for when one can manually prove the soundness of an expression 
+-- but can’t express this property in the type­system, or externalities to Haskell.
+-- unsafeCoerce :: a -> b -- Unsafely coerce anything into anything 
+-- unsafePerformIO :: IO a -> a -- Unsafely run IO action outside of IO
