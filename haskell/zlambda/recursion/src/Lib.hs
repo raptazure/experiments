@@ -91,3 +91,11 @@ search x xs
   | otherwise = True
   where
     (front, m : behind) = splitAt (length xs `div` 2) xs
+
+-- hanoi
+move :: (Eq a1, Num a1) => (a1, a2, a2, a2) -> [(a2, a2)]
+move (1, from, to, via) = [(from, to)]
+move (n, from, to, via) = move (n -1, from, via, to) ++ [(from, to)] ++ move (n -1, via, to, from)
+
+hanoi :: (Eq a1, Num a1, Num a2) => a1 -> [(a2, a2)]
+hanoi n = move (n, 1, 2, 3)
