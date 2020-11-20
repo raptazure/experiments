@@ -1,38 +1,36 @@
-[@react.component]
-type state = {
-  seconds: int,
-  isTicking: bool,
-};
-
-type action =
-  | Start
-  | Stop
-  | Reset
-  | Tick;
-
-let initialState = {seconds: 30, isTicking: false};
-
-let reducer = (state, action) =>
-  switch (action) {
-  | Start => {...state, isTicking: true}
-  | Stop => {...state, isTicking: false}
-  | Reset => {...state, seconds: 30}
-  | Tick => {...state, seconds: state.seconds - 1}
-  };
+open State;
 
 [@react.component]
 let make = () => {
   let (state, dispatch) = React.useReducer(reducer, initialState);
+  let {seconds, currentPhase, isTicking} = state;
 
   React.useEffect0(() => {
     let timer = Js.Global.setInterval(() => dispatch(Tick), 1000);
     Some(() => Js.Global.clearInterval(timer));
   });
 
-  <div>
-    <div> {React.string(string_of_int(state.seconds))} </div>
-    <button onClick={_ => dispatch(Stop)}> {React.string("Stop")} </button>
-    <button onClick={_ => dispatch(Start)}> {React.string("Start")} </button>
-    <button onClick={_ => dispatch(Reset)}> {React.string("Reset")} </button>
+  <div className="container">
+    <Header seconds dispatch currentPhase />
+    <Timer
+      seconds
+      maxTime={
+        switch (currentPhase) {
+        | Work => state.workTime * 60
+        | Play => state.playTime * 60
+        }
+      }
+    />
+    <TimerActions dispatch isTicking />
+    <EditTime
+      phase="Work"
+      value={state.workTime}
+      onChange={e => dispatch(SetTime(Work, e))}
+    />
+    <EditTime
+      phase="Break"
+      value={state.playTime}
+      onChange={e => dispatch(SetTime(Play, e))}
+    />
   </div>;
 };
