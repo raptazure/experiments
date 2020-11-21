@@ -1,0 +1,22 @@
+{
+  "name": "reason-in-vue",
+  "sources": [
+    {
+      "dir": "src/reason",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "es6-global",
+      "in-source": true
+    }
+  ],
+  "suffix": ".bs.js",
+  "namespace": true,
+  "refmt": 3,
+  "bs-dependencies": ["@glennsl/bs-json", "bs-axios"],
+  "gentypeconfig": {
+    "language": "untyped"
+  }
+}
