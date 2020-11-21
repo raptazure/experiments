@@ -9,6 +9,7 @@
 - [JavaScript](https://github.com/raptazure/playground/tree/master/javascript)
 - [OCaml](https://github.com/raptazure/playground/tree/master/ocaml)
 - [Python](https://github.com/raptazure/playground/tree/master/python)
+- [ReasonML](https://github.com/raptazure/playground/tree/master/reason)
 - [Rust](https://github.com/raptazure/playground/tree/master/rust)
 - [TypeScript](https://github.com/raptazure/playground/tree/master/typescript)
 - [Unison](https://github.com/raptazure/playground/tree/master/unison)
