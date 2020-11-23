@@ -87,3 +87,27 @@ let obj:
   pub doYouWant = () => hasEnvy^;
   pri enableEnvy = envy => hasEnvy := envy
 };
+
+// Promise
+// Js.Promise.make: (
+//   (
+//     ~resolve: (. 'a) => unit,
+//     ~reject: (. exn) => unit
+//   ) => unit
+// ) => Js.Promise.t('a);
+
+let myPromise = Js.Promise.make((~resolve, ~reject) => resolve(. 2));
+
+myPromise
+|> Js.Promise.then_(value => {
+     Js.log(value);
+     Js.Promise.resolve(value + 2);
+   })
+|> Js.Promise.then_(value => {
+     Js.log(value);
+     Js.Promise.resolve(value + 3);
+   })
+|> Js.Promise.catch(err => {
+     Js.log2("Failure!!", err);
+     Js.Promise.resolve(-2);
+   });
