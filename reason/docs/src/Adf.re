@@ -58,7 +58,7 @@ type car('a) = {.. color: string} as 'a;
 
 let obj: tesla = {val red = "Red"; pub color = red};
 
-Js.log(obj#color); /* "Red" */
+// Js.log(obj#color); /* "Red" */
 
 type tesla' = {. drive: int => int};
 
