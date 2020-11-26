@@ -288,12 +288,12 @@ divByY dividend divisor = dividend / divisor
 {- Haddock -}
 -- -- | Multiline documentation for the function -- f with multiple arguments.
 -- fmap :: Functor f
---   => (a -> b) -- ^ function 
+--   => (a -> b) -- ^ function
 --   -> f a -- ^ input
 --   -> f b -- ^ output
 
 {- UnsafeFunctions -}
--- Unsafe functions exist only for when one can manually prove the soundness of an expression 
+-- Unsafe functions exist only for when one can manually prove the soundness of an expression
 -- but can’t express this property in the type­system, or externalities to Haskell.
--- unsafeCoerce :: a -> b -- Unsafely coerce anything into anything 
+-- unsafeCoerce :: a -> b -- Unsafely coerce anything into anything
 -- unsafePerformIO :: IO a -> a -- Unsafely run IO action outside of IO
