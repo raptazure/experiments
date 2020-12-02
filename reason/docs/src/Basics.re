@@ -296,10 +296,11 @@ type tree =
   | Node(tree, tree);
 
 type t' = string;
-type nonrec t'' = list(t');
+module M = {
+  type nonrec t' = list(t');
+};
 
-/* t'' is now list(string) */
-let x: t'' = ["hello", "world"];
+let x: M.t' = ["Hello", "World"];
 
 type node = {
   value: string,
