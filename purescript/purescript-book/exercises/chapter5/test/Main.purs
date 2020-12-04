@@ -1,13 +1,12 @@
 module Test.Main where
 
-import Prelude
-import Test.MySolutions
-
-import Data.Int(round)
-import Data.Maybe(Maybe(Just, Nothing))
+import Prelude (Unit, discard, negate, ($))
+import Data.Int (round)
+import Data.Maybe (Maybe(Just, Nothing))
 import Data.Person (Person)
-import Data.Picture (Point(..), Shape(..), Picture, Bounds(..), getCenter, origin)
+import Data.Picture (Picture, Point(..), Shape(..), getCenter, origin)
 import Effect (Effect)
+import Test.NoPeeking.Solutions (area, binomial, circleAtOrigin, doubleScaleAndCenter, factorial, fromSingleton, pascal, sameCity, shapeText)
 import Test.Unit (suite, test)
 import Test.Unit.Assert as Assert
 import Test.Unit.Main (runTest)
@@ -31,7 +30,6 @@ samplePicture =
 main :: Effect Unit
 main =
   runTest do
-    {-  Move this block comment starting point to enable more tests
     suite "Exercise Group - Simple Pattern Matching" do
       test "Exercise - factorial" do
         Assert.equal 1
@@ -74,50 +72,69 @@ main =
         Assert.equal "default"
           $ fromSingleton "default" []
         Assert.equal "B"
-          $ fromSingleton "default" ["B"]
+          $ fromSingleton "default" [ "B" ]
         Assert.equal "default"
-          $ fromSingleton "default" ["B", "C", "D"]
+          $ fromSingleton "default" [ "B", "C", "D" ]
     suite "Exercise Group - Algebraic Data Types" do
       test "Exercise - circleAtOrigin" do
         Assert.equal origin
           $ getCenter circleAtOrigin
       test "Exercise - doubleScaleAndCenter" do
         Assert.equal (Circle origin 10.0)
-          $ doubleScaleAndCenter $ Circle origin 5.0
+          $ doubleScaleAndCenter
+          $ Circle origin 5.0
         Assert.equal (Circle origin 10.0)
-          $ doubleScaleAndCenter $ Circle (Point { x: 2.0, y: 2.0 }) 5.0
+          $ doubleScaleAndCenter
+          $ Circle (Point { x: 2.0, y: 2.0 }) 5.0
         Assert.equal (Rectangle origin 10.0 10.0)
-          $ doubleScaleAndCenter $ Rectangle (Point { x: 0.0, y: 0.0 }) 5.0 5.0
+          $ doubleScaleAndCenter
+          $ Rectangle (Point { x: 0.0, y: 0.0 }) 5.0 5.0
         Assert.equal (Rectangle origin 40.0 40.0)
-          $ doubleScaleAndCenter $ Rectangle (Point { x: 30.0, y: 30.0 }) 20.0 20.0
+          $ doubleScaleAndCenter
+          $ Rectangle (Point { x: 30.0, y: 30.0 }) 20.0 20.0
         Assert.equal (Line (Point { x: -4.0, y: -4.0 }) (Point { x: 4.0, y: 4.0 }))
-          $ doubleScaleAndCenter $ Line (Point { x: -2.0, y: -2.0 }) (Point { x: 2.0, y: 2.0 })
+          $ doubleScaleAndCenter
+          $ Line (Point { x: -2.0, y: -2.0 }) (Point { x: 2.0, y: 2.0 })
         Assert.equal (Line (Point { x: -4.0, y: -4.0 }) (Point { x: 4.0, y: 4.0 }))
-          $ doubleScaleAndCenter $ Line (Point { x: 0.0, y: 4.0 }) (Point { x: 4.0, y: 8.0 })
-        Assert.equal (Text (Point { x: 0.0, y: 0.0 }) "Hello .purs!" )
-          $ doubleScaleAndCenter $ Text (Point { x: 4.0, y: 6.0 }) "Hello .purs!"
+          $ doubleScaleAndCenter
+          $ Line (Point { x: 0.0, y: 4.0 }) (Point { x: 4.0, y: 8.0 })
+        Assert.equal (Text (Point { x: 0.0, y: 0.0 }) "Hello .purs!")
+          $ doubleScaleAndCenter
+          $ Text (Point { x: 4.0, y: 6.0 }) "Hello .purs!"
       test "Exercise - shapeText" do
         Assert.equal (Just "Hello .purs!")
-          $ shapeText $ Text origin "Hello .purs!"
+          $ shapeText
+          $ Text origin "Hello .purs!"
         Assert.equal Nothing
-          $ shapeText $ Circle origin 1.0
+          $ shapeText
+          $ Circle origin 1.0
         Assert.equal Nothing
-          $ shapeText $ Rectangle origin 1.0 1.0
+          $ shapeText
+          $ Rectangle origin 1.0 1.0
         Assert.equal Nothing
-          $ shapeText $ Line origin (Point { x: 1.0, y: 1.0 })
+          $ shapeText
+          $ Line origin (Point { x: 1.0, y: 1.0 })
     suite "Exercise Group - Vector Graphics" do
       test "Exercise - area" do
         Assert.equal 50
-          $ round $ area $ Circle origin 4.0
+          $ round
+          $ area
+          $ Circle origin 4.0
         Assert.equal 40
-          $ round $ area $ Rectangle origin 4.0 10.0
+          $ round
+          $ area
+          $ Rectangle origin 4.0 10.0
         Assert.equal 0
-          $ round $ area $ Line origin (Point { x: 2.0, y: 2.0 })
+          $ round
+          $ area
+          $ Line origin (Point { x: 2.0, y: 2.0 })
         Assert.equal 0
-          $ round $ area $ Text origin "Text has no area!"
-      test "Exercise - Clipped shapeBounds" do
-        Assert.equal (Bounds { top: -2.0, left: -2.0, right: 2.0, bottom: 2.0 })
-          $ shapeBounds (Clipped samplePicture (Point { x: 0.0, y: 0.0 }) 4.0 4.0)
-        Assert.equal (Bounds { top: 3.0, left: 3.0, right: 7.0, bottom: 7.0 })
-          $ shapeBounds (Clipped samplePicture (Point { x: 5.0, y: 5.0 }) 4.0 4.0)
-    -}
+          $ round
+          $ area
+          $ Text origin "Text has no area!"
+
+-- test "Exercise - Clipped shapeBounds" do
+-- Assert.equal (Bounds { top: -2.0, left: -2.0, right: 2.0, bottom: 2.0 })
+--   $ shapeBounds (Clipped samplePicture (Point { x: 0.0, y: 0.0 }) 4.0 4.0)
+-- Assert.equal (Bounds { top: 3.0, left: 3.0, right: 7.0, bottom: 7.0 })
+--   $ shapeBounds (Clipped samplePicture (Point { x: 5.0, y: 5.0 }) 4.0 4.0)

@@ -8,7 +8,6 @@ module Data.Path
   ) where
 
 import Prelude
-
 import Data.Maybe (Maybe(..))
 
 data Path
@@ -46,16 +45,20 @@ root =
 
 filename :: Path -> String
 filename (File name _) = name
+
 filename (Directory name _) = name
 
 isDirectory :: Path -> Boolean
 isDirectory (Directory _ _) = true
+
 isDirectory _ = false
 
 ls :: Path -> Array Path
 ls (Directory _ xs) = xs
+
 ls _ = []
 
 size :: Path -> Maybe Int
 size (File _ bytes) = Just bytes
+
 size _ = Nothing
