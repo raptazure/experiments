@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 1c4d274d492f15368b621e11727047c3b948c7b0776e58704b6d1f5fdcf353ad
+-- hash: a9260f2cf9e236481c49ed7701b2edda48a7d2067d6281f1fbf31309b6cd6f73
 
 name:           monads
 version:        0.1.0.0
@@ -34,6 +34,7 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , mtl
   default-language: Haskell2010
 
 executable monads-exe
@@ -46,6 +47,7 @@ executable monads-exe
   build-depends:
       base >=4.7 && <5
     , monads
+    , mtl
   default-language: Haskell2010
 
 test-suite monads-test
@@ -59,4 +61,5 @@ test-suite monads-test
   build-depends:
       base >=4.7 && <5
     , monads
+    , mtl
   default-language: Haskell2010

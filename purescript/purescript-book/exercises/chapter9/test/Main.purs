@@ -1,24 +1,15 @@
 module Test.Main where
 
-import Prelude
-import Test.MySolutions
-
-import Data.Array ((..))
-import Data.Bifunctor (lmap)
-import Data.Either (Either(..))
+import Prelude (Unit, bind, discard, ($))
 import Data.Foldable (for_)
-import Data.Maybe (Maybe(..))
-import Data.Set as Set
-import Data.String (Pattern(..), split)
 import Effect (Effect)
-import Effect.Exception (message)
 import Node.Encoding (Encoding(..))
-import Node.FS.Aff (readTextFile, readdir, realpath, unlink)
+import Node.FS.Aff (readTextFile, readdir, unlink)
 import Node.Path (FilePath)
 import Node.Path as Path
 import Test.Copy (copyFile)
 import Test.HTTP (getUrl)
-import Test.Unit (TestSuite, suite, test)
+import Test.Unit (TestSuite, test)
 import Test.Unit.Assert as Assert
 import Test.Unit.Main (runTest)
 
@@ -33,15 +24,14 @@ outDir = Path.concat [ "test", "data-out" ]
 -- http-server (npm i -g http-server) and running it in the "/test/data"
 -- directory (http-server -p 42524)
 reqUrl :: String
-reqUrl =
-  -- Both http and https work for this API endpoint.
+reqUrl = -- Both http and https work for this API endpoint.
   "https://jsonplaceholder.typicode.com/todos/1"
-  -- If you want or need to use the http version (not the https), just
-  -- remove the 's' from `https://`:
-  --"http://jsonplaceholder.typicode.com/todos/1"
-  -- Use this url for the http-server solution:
-  --"http://localhost:42524/user.txt"
 
+-- If you want or need to use the http version (not the https), just
+-- remove the 's' from `https://`:
+--"http://jsonplaceholder.typicode.com/todos/1"
+-- Use this url for the http-server solution:
+--"http://localhost:42524/user.txt"
 main :: Effect Unit
 main =
   runTest do
@@ -50,7 +40,8 @@ main =
       files <- readdir outDir
       for_ files \f -> unlink $ Path.concat [ outDir, f ]
     runChapterExamples
-    {-  Move this block comment starting point to enable more tests
+
+{-  Move this block comment starting point to enable more tests
     test "concatenateFiles" do
       let
         inFoo = Path.concat [ inDir, "foo.txt" ]
