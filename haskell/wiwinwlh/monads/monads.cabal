@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: a9260f2cf9e236481c49ed7701b2edda48a7d2067d6281f1fbf31309b6cd6f73
+-- hash: 88c467d991cc208fd13797c836aed25b6f67d9491eeaa8360d70e37becfe73c4
 
 name:           monads
 version:        0.1.0.0
@@ -28,6 +28,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Transformers
   other-modules:
       Paths_monads
   hs-source-dirs:
