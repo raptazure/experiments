@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 88c467d991cc208fd13797c836aed25b6f67d9491eeaa8360d70e37becfe73c4
+-- hash: 7308ef466590220c48eb0ba9a792922fbbc48d8078c5053a531e12d74f29fe93
 
 name:           monads
 version:        0.1.0.0
@@ -27,7 +27,9 @@ source-repository head
 
 library
   exposed-modules:
+      Fused
       Lib
+      Poly
       Transformers
   other-modules:
       Paths_monads
@@ -35,7 +37,10 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , fused-effects
+    , mmorph
     , mtl
+    , polysemy
   default-language: Haskell2010
 
 executable monads-exe
@@ -47,8 +52,11 @@ executable monads-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , fused-effects
+    , mmorph
     , monads
     , mtl
+    , polysemy
   default-language: Haskell2010
 
 test-suite monads-test
@@ -61,6 +69,9 @@ test-suite monads-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , fused-effects
+    , mmorph
     , monads
     , mtl
+    , polysemy
   default-language: Haskell2010

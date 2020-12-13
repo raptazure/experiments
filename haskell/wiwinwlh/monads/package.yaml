@@ -22,6 +22,9 @@ description: Please see the README on GitHub at <https://github.com/githubuser/m
 dependencies:
   - base >= 4.7 && < 5
   - mtl
+  - mmorph
+  - polysemy
+  - fused-effects
 
 library:
   source-dirs: src

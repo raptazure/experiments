@@ -2,9 +2,29 @@
 
 module Transformers where
 
+import Control.Monad.Cont (MonadIO (liftIO))
+import Control.Monad.Morph
+  ( MFunctor (hoist),
+    MonadTrans (lift),
+    generalize,
+  )
 import Control.Monad.Reader
+  ( MonadReader (ask, local),
+    ReaderT (..),
+  )
 import Control.Monad.State
+  ( MonadState,
+    State,
+    StateT,
+    evalState,
+    gets,
+    modify,
+  )
 import Control.Monad.Writer
+  ( MonadWriter (tell),
+    WriterT,
+    execWriterT,
+  )
 
 -- lift :: (Monad m, MonadTrans t) => m a -> t m a
 -- type State s = StateT s Identity
@@ -44,8 +64,7 @@ eval ex = case ex of
     return (a + b)
   Var x -> do
     env <- ask
-    val <- lift (lookup x env)
-    return val
+    lift (lookup x env)
 
 env :: Env
 env = [("x", 2), ("y", 5)]
@@ -135,12 +154,41 @@ program = [Push 42, Push 27, Puts, Pop, Puts, Pop]
 printProgram :: IO ()
 printProgram = mapM_ print $ execVM program
 
-data A = MkA Int
-
 newtype B = MkB Int
-
-extractA :: A -> Int
-extractA (MkA x) = x
 
 extractB :: B -> Int
 extractB (MkB x) = x
+
+-- | Monad Morphisms
+-- mmporph
+-- hoist :: Monad m => (forall a. m a -> n a) -> t m b -> t n b
+-- generalize :: Monad m => Identity a -> m a
+type Eval' a = State [Int] a
+
+runEval :: [Int] -> Eval' a -> a
+runEval = flip evalState
+
+pop :: Eval' Int
+pop = do
+  top <- gets head
+  modify tail
+  return top
+
+push :: Int -> Eval' ()
+push x = modify (x :)
+
+ev1 :: Eval' Int
+ev1 = do
+  push 3
+  push 4
+  pop
+  pop
+
+ev2 :: StateT [Int] IO ()
+ev2 = do
+  result <- hoist generalize ev1
+  liftIO $ putStrLn $ "Result: " ++ show result
+
+-- | Effect systems
+-- Polysemy
+-- Fused Effects
