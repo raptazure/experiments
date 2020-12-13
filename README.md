@@ -12,6 +12,6 @@
 - [Python](https://github.com/raptazure/playground/tree/master/python)
 - [ReasonML](https://github.com/raptazure/playground/tree/master/reason)
 - [Rust](https://github.com/raptazure/playground/tree/master/rust)
-- [Standard ML](https://github.com/raptazure/playground/tree/master/sml)
 - [TypeScript](https://github.com/raptazure/playground/tree/master/typescript)
 - [Unison](https://github.com/raptazure/playground/tree/master/unison)
+
