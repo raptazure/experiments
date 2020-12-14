@@ -50,7 +50,7 @@ where
 -- import GHC.OverloadedLabels (IsLabel (..))
 -- import GHC.Records (HasField (..))
 
-import Control.Applicative
+import Control.Applicative (Applicative (liftA2), Const (Const))
 -- import Data.Functor.Const (Const (..))
 import Data.List (foldl1')
 import Data.Text (Text)
