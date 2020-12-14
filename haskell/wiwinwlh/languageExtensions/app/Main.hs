@@ -1,6 +1,7 @@
 module Main where
 
-import Lib
+import Lib (headNil)
 
 main :: IO ()
-main = someFunc
+main = do
+  print $ headNil [1, 2, 3]

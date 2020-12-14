@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: acca1fbddb68e9146af0c687e74aa83855df4e71793e160b392358c686bce18f
+-- hash: 723f3efc8c6946550845bc915aeff4101b4604222556e371196bbca559893ca3
 
 name:           languageExtensions
 version:        0.1.0.0
@@ -34,6 +34,8 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , safe
+    , text
   default-language: Haskell2010
 
 executable languageExtensions-exe
@@ -46,6 +48,8 @@ executable languageExtensions-exe
   build-depends:
       base >=4.7 && <5
     , languageExtensions
+    , safe
+    , text
   default-language: Haskell2010
 
 test-suite languageExtensions-test
@@ -59,4 +63,6 @@ test-suite languageExtensions-test
   build-depends:
       base >=4.7 && <5
     , languageExtensions
+    , safe
+    , text
   default-language: Haskell2010
