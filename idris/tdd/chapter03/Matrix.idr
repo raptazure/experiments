@@ -6,7 +6,7 @@ createEmpties {n = (S k)} = [] :: createEmpties
 
 transposeHelper : (x : Vect n elem) -> (xs : Vect n (Vect k elem)) -> Vect n (Vect (S k) elem)
 transposeHelper [] [] = []
-transposeHelper (x :: xs) (y :: ys) = (x :: y) :: transposeHelper xs ys
+transposeHelper (x :: ys) (y :: xs) = (x :: y) :: transposeHelper ys xs
 
 transposeMat : Vect m (Vect n elem) -> Vect n (Vect m elem)
 transposeMat [] = createEmpties
