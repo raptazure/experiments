@@ -17,3 +17,11 @@ valToString' : (isInt : Bool) -> (case isInt of
                                         True => Int) -> String
 valToString' False y = trim y
 valToString' True y = cast y
+
+appendV : Vect n a -> Vect m a -> Vect (n + m) a 
+appendV [] ys = ys
+appendV (x :: xs) ys = x :: appendV xs ys
+
+zipV : Vect n a -> Vect n b -> Vect n (a, b)
+zipV [] ys = []
+zipV (x :: xs) (y :: ys) = (x, y) :: zipV xs ys
