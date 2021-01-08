@@ -22,11 +22,12 @@ data Command = Add String
               | Get Integer
               | Quit
 
-parseCommand : String -> String -> Maybe Command
+parseCommand : (cmd : String) -> (args : String) -> Maybe Command
 parseCommand "add" str = Just (Add str)
-parseCommand "get" val = case all isDigit (unpack val) of
-                            False => Nothing
-                            True => Just (Get (cast val))
+parseCommand "get" val = 
+  case all isDigit (unpack val) of
+    False => Nothing
+    True => Just (Get (cast val))
 parseCommand "quit" "" = Just Quit
 parseCommand _ _ = Nothing
 
@@ -35,11 +36,11 @@ parse input = case span (/= ' ') input of
                 (cmd, args) => parseCommand cmd (ltrim args)
 
 getEntry : (pos : Integer) -> (store : DataStore) -> Maybe (String, DataStore)
-getEntry pos store = 
-  let store_items = items store in
-    case integerToFin pos (size store) of
-      Nothing => Just ("Out of range\n", store)
-      Just id => Just (index id store_items ++ "\n", store)
+getEntry pos store 
+  = let store_items = items store in 
+      case integerToFin pos (size store) of
+        Nothing => Just ("Out of range\n", store)
+        Just id => Just (index id store_items ++ "\n", store)
 
 processInput : DataStore -> String -> Maybe (String, DataStore)
 processInput store input = 

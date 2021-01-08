@@ -53,13 +53,14 @@ searchString k (x :: xs) str =
       else rest
 
 processInput : DataStore -> String -> Maybe (String, DataStore)
-processInput store input = case parse input of
-                                Nothing => Just ("Invalid command\n", store)
-                                (Just (Add item)) => Just ("ID" ++ show (size store) ++ "\n", addToStore store item)
-                                (Just (Get pos)) => getEntry pos store
-                                (Just Size) => Just (show (size store) ++ "\n", store)
-                                Just (Search str) => Just (searchString 0 (items store) str, store)
-                                (Just Quit) => Nothing
+processInput store input = 
+  case parse input of
+    Nothing => Just ("Invalid command\n", store)
+    Just (Add item) => Just ("ID" ++ show (size store) ++ "\n", addToStore store item)
+    Just (Get pos) => getEntry pos store
+    Just Size => Just (show (size store) ++ "\n", store)
+    Just (Search str) => Just (searchString 0 (items store) str, store)
+    Just Quit => Nothing
 
 main : IO ()
 main = replWith (MkData _ []) "Command: " processInput
