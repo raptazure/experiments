@@ -22,6 +22,11 @@ readPair = do
   str2 <- getLine
   pure (str1, str2)
 
+usePair : IO ()
+usePair = do 
+  (str1, str2) <- readPair
+  putStrLn ("You entered " ++ str1 ++ " and " ++ str2)
+
 readNumbers_v2 : IO (Maybe (Nat, Nat))
 readNumbers_v2 = do
   Just num1_ok <- readNumber
@@ -33,3 +38,6 @@ readNumbers =
   do Just num1_ok <- readNumber | Nothing => pure Nothing
      Just num2_ok <- readNumber | Nothing => pure Nothing
      pure (Just (num1_ok, num2_ok))
+
+printLn' : Show a => a -> IO ()
+printLn' x = putStrLn (show x)

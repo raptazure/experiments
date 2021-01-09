@@ -1,11 +1,13 @@
 import Data.Vect
 
 readToBlank : IO (List String)
-readToBlank = do x <- getLine
-                 case x of
-                    "" => pure []
-                    _ => do rest <- readToBlank
-                            pure (x :: rest)
+readToBlank = do 
+  x <- getLine
+  case x of
+    "" => pure []
+    _ => do 
+      rest <- readToBlank
+      pure (x :: rest)
 
 readAndSave : IO ()
 readAndSave = do
@@ -24,12 +26,14 @@ readVectFile filename = do
     | Left err => pure (_ ** [])
   closeFile h
   pure contents
-where readContents : File -> IO (Either FileError (n ** Vect n String))
-      readContents h = do eof <- fEOF h
-                          if eof then pure (Right (_ ** [])) else do
-                              Right str <- fGetLine h
-                                | Left err => pure (Left err)
-                              Right (_ ** rest) <- readContents h
-                                | Left err => pure (Left err)
-                              pure (Right (_ ** str :: rest))
-                            
+where
+  readContents : File -> IO (Either FileError (n ** Vect n String))
+  readContents h = do
+    eof <- fEOF h
+    if eof then pure (Right (_ ** []))
+    else do
+      Right str <- fGetLine h
+        | Left err => pure (Left err)
+      Right (_ ** rest) <- readContents h
+        | Left err => pure (Left err)
+      pure (Right (_ ** str :: rest))

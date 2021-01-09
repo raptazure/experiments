@@ -26,4 +26,3 @@ guess answer = do
 main : IO ()
 main = do t <- time
           guess (cast (t `mod` 101))
-
