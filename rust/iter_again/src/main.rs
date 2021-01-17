@@ -1,3 +1,5 @@
+use std::vec;
+
 struct OneToTen(u32);
 
 fn one_to_ten() -> OneToTen {
@@ -102,15 +104,50 @@ where
     }
 }
 
-fn sum<I>(iter: I) -> I::Item
-where
-    I: Iterator,
-    I::Item: std::ops::Add<Output = I::Item> + From<u8>,
-{
-    iter.fold(From::from(0u8), std::ops::Add::add)
+// fn sum<I>(iter: I) -> I::Item
+// where
+//     I: Iterator,
+//     I::Item: std::ops::Add<Output = I::Item> + From<u8>,
+// {
+//     iter.fold(From::from(0u8), std::ops::Add::add)
+// }
+
+fn double(x: &mut u32) {
+    *x *= 2;
+}
+
+struct InfiniteUnit;
+
+// impl IntoIterator for InfiniteUnit {
+//     type Item = ();
+//     type IntoIter = std::iter::Repeat<()>;
+//     fn into_iter(self) -> Self::IntoIter {
+//         std::iter::repeat(())
+//     }
+// }
+
+impl IntoIterator for InfiniteUnit {
+    type Item = ();
+    type IntoIter = InfiniteUnitIter;
+    fn into_iter(self) -> Self::IntoIter {
+        InfiniteUnitIter
+    }
+}
+
+struct InfiniteUnitIter;
+
+impl Iterator for InfiniteUnitIter {
+    type Item = ();
+    fn next(&mut self) -> Option<Self::Item> {
+        Some(())
+    }
 }
 
 fn main() {
+    let mut x = 5;
+    double(&mut x);
+    println!("{}", x);
+
     for i in one_to_ten() {
         println!("{}", i);
     }
@@ -142,4 +179,38 @@ fn main() {
 
     let res = (1..11).fold(0, std::ops::Add::add);
     println!("{}", res);
+
+    let mut nums = vec![1, 2, 3, 4, 5];
+    for i in 1..3 {
+        // for j in nums.iter() {
+        for j in &nums {
+            println!("{},{}", i, j);
+        }
+    }
+
+    for i in 1..3 {
+        // for j in nums.iter_mut() {
+        for j in &mut nums {
+            println!("{},{}", i, j);
+            *j *= 2;
+        }
+    }
+
+    // Whenever you use for x in y, the compiler automatically calls into_iter() on y.
+    // This allows you to loop over types which don’t actually have their own implementation of Iterator.
+    for i in 1..3 {
+        let nums = vec![1, 2, 3, 4, 5];
+        for j in nums.into_iter() {
+            println!("{},{}", i, j);
+        }
+    }
+
+    let mut count = 0;
+    for _ in InfiniteUnit {
+        count += 1;
+        println!("count == {}", count);
+        if count >= 5 {
+            break;
+        }
+    }
 }
