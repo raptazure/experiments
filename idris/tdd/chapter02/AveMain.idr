@@ -1,6 +1,7 @@
 module Main
 
 import Average
+import System.REPL
 
 showAverage : String -> String
 showAverage str = "The average word length is: " ++

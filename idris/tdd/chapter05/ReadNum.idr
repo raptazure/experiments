@@ -1,8 +1,10 @@
+import Data.Strings
+
 readNumber : IO (Maybe Nat)
 readNumber = do
   input <- getLine
   if all isDigit (unpack input)
-    then pure (Just (cast input))
+    then pure (Just (stringToNatOrZ input))
     else pure Nothing
 
 readNuambers_v1 : IO (Maybe (Nat, Nat))
@@ -27,6 +29,7 @@ usePair = do
   (str1, str2) <- readPair
   putStrLn ("You entered " ++ str1 ++ " and " ++ str2)
 
+partial
 readNumbers_v2 : IO (Maybe (Nat, Nat))
 readNumbers_v2 = do
   Just num1_ok <- readNumber

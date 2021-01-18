@@ -1,6 +1,8 @@
 module Main
 
 import Data.Vect
+import System.REPL
+import Data.Strings
 
 infixr 5 .+.
 

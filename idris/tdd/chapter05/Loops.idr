@@ -1,6 +1,7 @@
 module Main
 
 import System
+import Data.Strings
 
 countdown : (secs : Nat) -> IO ()
 countdown Z = putStrLn "Lift off!"
@@ -12,7 +13,7 @@ readNumber : IO (Maybe Nat)
 readNumber = do
   input <- getLine
   if all isDigit (unpack input)
-      then pure (Just (cast input))
+      then pure (Just (stringToNatOrZ input))
       else pure Nothing
 
 countdowns : IO ()

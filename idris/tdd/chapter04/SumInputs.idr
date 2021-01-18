@@ -1,4 +1,5 @@
 module Main
+import System.REPL
 
 sumInputs : Integer -> String -> Maybe (String, Integer)
 sumInputs tot inp = 

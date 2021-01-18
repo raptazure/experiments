@@ -1,6 +1,8 @@
 module Main
 
 import Data.Vect
+import System.REPL
+import Data.Strings
 
 data DataStore : Type where
   MkData : (size : Nat) -> (items : Vect size String) -> DataStore

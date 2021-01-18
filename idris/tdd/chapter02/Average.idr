@@ -1,4 +1,6 @@
 module Average
+import Data.Strings
+import Data.List
 
 ||| Calculate the average length of words in a string.
 ||| @str a string containing words separated by whitespace.
@@ -14,5 +16,3 @@ average str =
 
     allLengths : List String -> List Nat
     allLengths strs = map length strs
-
-              
