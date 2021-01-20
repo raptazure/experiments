@@ -1,0 +1,59 @@
+a {
+	color:blue;
+}
+#wrapper {
+  padding-top:30px;
+  text-align:center;
+}
+#wrapper #header {
+  font-family:sans-serif;
+  font-size:18px;
+  margin-top:40px;
+  padding-bottom:25px;
+}
+#header > span {
+  font-weight:bold;
+  display:inline-block;
+  width:150px;
+}
+#header #name {width:260px;}
+
+#content {
+  display:inline-block;
+  text-align:left;
+}
+#content #add {color:blue;}
+
+.todo {margin-bottom:20px;}
+.todo > form, .todo > a, .todo > span, .todo > div {
+  padding:0px;
+  margin:0px;
+  display:inline-block;
+  text-align:left;
+}
+.todo > span {
+  width:260px;
+}
+.todo > div {
+  width:130px;
+}
+.todo > a {
+  width:60px;
+  margin-right:50px;
+}
+
+form#edit {
+  display:inline-block;
+}
+#edit input[type="text"] {
+  width:250px;
+}
+#edit div {
+  margin-bottom:25px;
+}
+#edit input[type="checkbox"] {
+float:right;
+}
+#edit input[type="submit"] {
+  margin-top:30px;
+}
