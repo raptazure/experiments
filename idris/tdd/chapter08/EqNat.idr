@@ -19,11 +19,3 @@ checkEqNat' (S k) 0 = Nothing
 checkEqNat' (S k) (S j) = do
   (Same k) <- checkEqNat' k j
   Just (Same (S k))
-
-typeof : {t : Type} -> t -> String
-typeof {t} _ with (t)
-  typeof _ | String = "string"
-  typeof _ | Integer = "number"
-  typeof _ | Double = "number"
-  typeof _ | Bool = "boolean"
-  typeof _ | _ = "object"
