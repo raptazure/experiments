@@ -12,5 +12,5 @@ checkEqNat Z Z = Yes Refl
 checkEqNat Z (S k) = No zeroNotSuc
 checkEqNat (S k) Z = No sucNotZero
 checkEqNat (S k) (S j) = case checkEqNat k j of
-                            Yes prf => Yes (cong prf)
+                            Yes prf => Yes (cong S prf)
                             No contra => No (noRec contra)
