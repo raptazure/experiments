@@ -2,7 +2,7 @@ import Data.Nat
 import Data.Vect
 
 myPlusCommutes : (n : Nat) -> (m : Nat) -> n + m = m + n
-myPlusCommutes 0 m = rewrite plusZeroRightNeutral m in Refl
+myPlusCommutes Z m = rewrite plusZeroRightNeutral m in Refl
 myPlusCommutes (S k) m = rewrite myPlusCommutes k m in
                           rewrite plusSuccRightSucc m k in Refl
 
@@ -16,5 +16,5 @@ myReverse : Vect len a -> Vect len a
 myReverse xs = reverse' [] xs
   where reverse' : Vect n a -> Vect m a -> Vect (n + m) a
         reverse' acc [] = reverseProof_nil acc
-        reverse' acc (x :: xs)
+        reverse' {n} {m = S m} acc (x :: xs)
                         = reverseProof_xs (reverse' (x :: acc) xs)

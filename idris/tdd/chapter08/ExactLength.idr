@@ -6,9 +6,9 @@ data EqNat : (num1 : Nat) -> (num2 : Nat) -> Type where
   Same : (num : Nat) -> EqNat num num
 
 checkEqNat : (num1 : Nat) -> (num2 : Nat) -> Maybe (EqNat num1 num2)
-checkEqNat 0 0 = Just (Same 0)
-checkEqNat 0 (S k) = Nothing
-checkEqNat (S k) 0 = Nothing
+checkEqNat Z Z = Just (Same 0)
+checkEqNat Z (S k) = Nothing
+checkEqNat (S k) Z = Nothing
 checkEqNat (S k) (S j) = do
   (Same k) <- checkEqNat k j
   Just (Same (S k))

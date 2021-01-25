@@ -3,7 +3,7 @@ import Data.Nat
 
 myReverse : Vect n a -> Vect n a
 myReverse [] = []
-myReverse {n = S k} (x :: xs) =let res = myReverse xs ++ [x] in
+myReverse {n = S k} (x :: xs) = let res = myReverse xs ++ [x] in
                          rewrite plusCommutative 1 k in res
 
 myReverse' : Vect n a -> Vect n a
