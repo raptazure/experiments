@@ -16,7 +16,7 @@ let
   }) { inherit pkgs; };
 
 in pkgs.stdenv.mkDerivation {
-  name = "hourig";
+  name = "book";
   buildInputs = with pursPkgs; [
     pursPkgs.purs
     pursPkgs.spago
