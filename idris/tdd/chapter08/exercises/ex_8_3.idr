@@ -22,3 +22,15 @@ DecEq a => DecEq (Vect n a) where
       Yes Refl => case decEq xs ys of
         Yes Refl => Yes Refl
         No contra => No (tailUnequal contra)
+
+data Id = MkId String
+
+strUnequal : {str1 : String} -> {str2 : String} -> (contra : (str1 = str2) -> Void) -> ((MkId str1) = (MkId str2)) -> Void
+strUnequal contra Refl = contra Refl
+
+DecEq Id where
+  decEq (MkId "") (MkId "") = Yes Refl
+  decEq (MkId str1) (MkId str2) = 
+    case decEq str1 str2 of
+      No contra => No (strUnequal contra)
+      Yes Refl => Yes Refl
