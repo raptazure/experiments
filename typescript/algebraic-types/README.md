@@ -1,4 +1,3 @@
-# Typed Functional Programming in TS
 
 - `"strict": true` in tsconfig.json
 - annotate function return types
