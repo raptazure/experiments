@@ -3,5 +3,6 @@
 /output
 /.cache
 /dev
+/.spago
 .DS_Store
 .psc-ide-port

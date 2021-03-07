@@ -1,6 +1,7 @@
 module App.Button where
 
 import Prelude
+
 import Data.Maybe (Maybe(..))
 import Halogen as H
 import Halogen.HTML as HH
@@ -52,7 +53,10 @@ render state =
     , HH.div_ (map HH.text [ "lake1", "lake2" ])
     ]
 
-handleAction :: forall output m. Action → H.HalogenM State Action () output m Unit
+handleAction :: forall output m. Action -> H.HalogenM State Action () output m Unit
 handleAction = case _ of
   Increment -> H.modify_ \st -> st { count = st.count + 1 }
   Decrement -> H.modify_ \st -> st { count = st.count - 1 }
+
+-- handleAction' :: forall output. Action -> HalogenM State Action () output Aff Unit
+-- handleAction' :: forall output m. MonadAff m => Action -> HalogenM State Action () output m Unit
