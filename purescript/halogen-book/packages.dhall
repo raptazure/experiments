@@ -120,7 +120,6 @@ let additions =
 let upstream =
       https://raw.githubusercontent.com/purescript/package-sets/a0938edbed99b8739dcfc9303bda8e264f7fe853/src/packages.dhall sha256:595d52db8e1a061c5b5b7bddeea05c3d7167cd8ead86f19554611c568464f21f
 
-
 let overrides = {=}
 
 let additions = {=}
