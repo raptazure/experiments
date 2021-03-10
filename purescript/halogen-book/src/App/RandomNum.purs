@@ -4,6 +4,7 @@ import Prelude
 import Data.Maybe (Maybe(..), maybe)
 import Effect (Effect)
 import Effect.Class (class MonadEffect)
+import Effect.Class.Console (log)
 import Effect.Random (random)
 import Halogen as H
 import Halogen.Aff (awaitBody, runHalogenAff)
@@ -21,14 +22,16 @@ type State
   = Maybe Number
 
 data Action
-  = Regenerate
+  = Initialize
+  | Regenerate
+  | Finalize
 
 component :: forall query input output m. MonadEffect m => H.Component query input output m
 component =
   H.mkComponent
     { initialState
     , render
-    , eval: H.mkEval $ H.defaultEval { handleAction = handleAction }
+    , eval: H.mkEval $ H.defaultEval { handleAction = handleAction, initialize = Just Initialize, finalize = Just Finalize }
     }
 
 initialState :: forall input. input -> State
@@ -50,6 +53,13 @@ render state = do
 
 handleAction :: forall output m. MonadEffect m => Action -> H.HalogenM State Action () output m Unit
 handleAction = case _ of
+  Initialize -> do
+    handleAction Regenerate
+    newNum <- H.get
+    log ("Initialized: " <> show newNum)
   Regenerate -> do
     newNumber <- H.liftEffect random
     H.modify_ \_ -> Just newNumber
+  Finalize -> do
+    number <- H.get
+    log ("Finalized! Last number was: " <> show number)
