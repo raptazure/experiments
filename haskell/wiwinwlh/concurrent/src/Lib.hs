@@ -6,6 +6,7 @@ module Lib
     example04,
     example05,
     example06,
+    actions,
   )
 where
 
@@ -13,6 +14,7 @@ import Control.Concurrent
   ( Chan,
     MVar,
     QSem,
+    ThreadId,
     forkIO,
     myThreadId,
     newChan,
@@ -33,10 +35,12 @@ import Control.Concurrent.STM
     modifyTVar,
     newTVar,
     newTVarIO,
+    readTVar,
     readTVarIO,
+    retry,
   )
-import Control.Monad (forM_, forever, replicateM_)
-import Control.Parallel.Strategies (rpar, rseq, runEval)
+import Control.Monad (forM_, forever, replicateM_, when)
+import Control.Parallel.Strategies (Eval, Strategy, rpar, rseq, runEval)
 import Data.IORef (IORef, modifyIORef, newIORef, readIORef)
 import Prelude hiding (take)
 
@@ -80,15 +84,28 @@ example03 = do
   forkIO (take m)
   put m
 
-example04 :: IO Integer
+type Account = TVar Double
+
+actions :: Account -> Account -> [IO ThreadId]
+actions a b =
+  map
+    forkIO
+    [ atomically (transfer' 10 a b),
+      atomically (transfer' (-20) a b),
+      atomically (transfer' 30 a b)
+    ]
+
+example04 :: IO Double
 example04 = do
   account1 <- newTVarIO 5000
   account2 <- newTVarIO 1000
   atomically (transfer' 500 account1 account2)
   readTVarIO account1
 
-transfer' :: Num a => a -> TVar a -> TVar a -> STM ()
+transfer' :: Double -> Account -> Account -> STM ()
 transfer' n from to = do
+  available <- readTVar from
+  when (n > available) retry
   modifyTVar from (+ (- n))
   modifyTVar to (+ n)
 
@@ -126,3 +143,36 @@ example06 = do
   forkIO (task 2 sem)
   forkIO (task 3 sem)
   pure ()
+
+parPair' :: Strategy (a, b)
+parPair' (a, b) = do
+  a' <- rpar a
+  b' <- rpar b
+  pure (a', b')
+
+fib :: Int -> Int
+fib 0 = 0
+fib 1 = 1
+fib n = fib (n - 1) + fib (n - 2)
+
+serial :: (Int, Int)
+serial = (fib 30, fib 31)
+
+parallel :: (Int, Int)
+parallel = runEval . parPair' $ (fib 30, fib 31)
+
+using :: a -> Strategy a -> a
+x `using` s = runEval (s x)
+
+parallel' :: (Int, Int)
+parallel' = (fib 30, fib 31) `using` parPair'
+
+parMap' :: (a -> b) -> [a] -> Eval [b]
+parMap' f [] = pure []
+parMap' f (a : as) = do
+  b <- rpar (f a)
+  bs <- parMap' f as
+  pure (b : bs)
+
+result :: [Int]
+result = runEval $ parMap' (+ 1) [1 .. 1000]

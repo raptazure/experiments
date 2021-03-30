@@ -1,7 +1,9 @@
 module Main where
 
+import Control.Concurrent.STM (atomically, newTVarIO, readTVar, readTVarIO)
 import Lib
-  ( example01,
+  ( actions,
+    example01,
     example02,
     example03,
     example04,
@@ -26,3 +28,10 @@ main = do
   hSetBuffering stdout LineBuffering
   example05
   example06
+  accountA <- newTVarIO 60
+  accountB <- newTVarIO 0
+  sequence_ (actions accountA accountB)
+  balanceA <- readTVarIO accountA
+  balanceB <- readTVarIO accountB
+  print balanceA
+  print balanceB
