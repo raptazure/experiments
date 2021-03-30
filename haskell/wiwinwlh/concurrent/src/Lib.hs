@@ -4,10 +4,28 @@ module Lib
     example02,
     example03,
     example04,
+    example05,
+    example06,
   )
 where
 
-import Control.Concurrent (MVar, forkIO, newEmptyMVar, putMVar, takeMVar, threadDelay)
+import Control.Concurrent
+  ( Chan,
+    MVar,
+    QSem,
+    forkIO,
+    myThreadId,
+    newChan,
+    newEmptyMVar,
+    newQSem,
+    putMVar,
+    readChan,
+    signalQSem,
+    takeMVar,
+    threadDelay,
+    waitQSem,
+    writeChan,
+  )
 import Control.Concurrent.STM
   ( STM,
     TVar,
@@ -17,7 +35,7 @@ import Control.Concurrent.STM
     newTVarIO,
     readTVarIO,
   )
-import Control.Monad (forever, replicateM_)
+import Control.Monad (forM_, forever, replicateM_)
 import Control.Parallel.Strategies (rpar, rseq, runEval)
 import Data.IORef (IORef, modifyIORef, newIORef, readIORef)
 import Prelude hiding (take)
@@ -31,7 +49,7 @@ example01 f x y = runEval $ do
   b <- rpar $ f y
   rseq a
   rseq b
-  return (a, b)
+  pure (a, b)
 
 example02 :: IO Integer
 example02 = do
@@ -73,3 +91,38 @@ transfer' :: Num a => a -> TVar a -> TVar a -> STM ()
 transfer' n from to = do
   modifyTVar from (+ (- n))
   modifyTVar to (+ n)
+
+producer :: Chan Integer -> IO ()
+producer chan = forM_ [0 .. 1000] $ \i -> do
+  writeChan chan i
+  putStrLn "Writing to channel."
+
+consumer :: Chan Integer -> IO ()
+consumer chan = forever $ do
+  val <- readChan chan
+  thread <- myThreadId
+  putStrLn ("Received item in thead: " ++ show thread)
+  print val
+
+example05 :: IO ()
+example05 = do
+  chan <- newChan
+  forkIO (consumer chan)
+  forkIO (consumer chan)
+  forkIO (consumer chan)
+  forkIO (consumer chan)
+  pure ()
+
+task :: Integer -> QSem -> IO ()
+task index sem = do
+  waitQSem sem
+  forkIO $ putStrLn ("Thread: " ++ show index ++ "\n")
+  signalQSem sem
+
+example06 :: IO ()
+example06 = do
+  sem <- newQSem 1
+  forkIO (task 1 sem)
+  forkIO (task 2 sem)
+  forkIO (task 3 sem)
+  pure ()
