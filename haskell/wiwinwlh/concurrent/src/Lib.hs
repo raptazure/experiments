@@ -7,6 +7,10 @@ module Lib
     example05,
     example06,
     actions,
+    test01,
+    test02,
+    test03,
+    timeit,
   )
 where
 
@@ -28,6 +32,7 @@ import Control.Concurrent
     waitQSem,
     writeChan,
   )
+import Control.Concurrent.Async (async, mapConcurrently, race, wait)
 import Control.Concurrent.STM
   ( STM,
     TVar,
@@ -42,6 +47,7 @@ import Control.Concurrent.STM
 import Control.Monad (forM_, forever, replicateM_, when)
 import Control.Parallel.Strategies (Eval, Strategy, rpar, rseq, runEval)
 import Data.IORef (IORef, modifyIORef, newIORef, readIORef)
+import Data.Time (diffUTCTime, getCurrentTime)
 import Prelude hiding (take)
 
 someFunc :: IO ()
@@ -176,3 +182,33 @@ parMap' f (a : as) = do
 
 result :: [Int]
 result = runEval $ parMap' (+ 1) [1 .. 1000]
+
+timeit :: IO a -> IO (a, Double)
+timeit io = do
+  t0 <- getCurrentTime
+  a <- io
+  t1 <- getCurrentTime
+  pure (a, realToFrac (t1 `diffUTCTime` t0))
+
+worker :: Int -> IO Int
+worker n = do
+  threadDelay (10 ^ 2 * n)
+  pure (n * n)
+
+-- Spawn 2 threads in parallel, halt on both finished.
+test01 :: IO (Int, Int)
+test01 = do
+  val1 <- async $ worker 1000
+  val2 <- async $ worker 2000
+  (,) <$> wait val1 <*> wait val2
+
+-- Spawn 2 threads in parallel, halt on first finished.
+test02 :: IO (Either Int Int)
+test02 = do
+  let val1 = worker 1000
+  let val2 = worker 2000
+  race val1 val2
+
+-- Spawn 10 threads in parallel, halt on all finished.
+test03 :: IO [Int]
+test03 = mapConcurrently worker [0 .. 10]

@@ -23,6 +23,8 @@ dependencies:
   - base >= 4.7 && < 5
   - parallel
   - stm
+  - time
+  - async
 
 library:
   source-dirs: src

@@ -10,6 +10,10 @@ import Lib
     example05,
     example06,
     someFunc,
+    test01,
+    test02,
+    test03,
+    timeit,
   )
 import System.IO
   ( BufferMode (LineBuffering),
@@ -35,3 +39,6 @@ main = do
   balanceB <- readTVarIO accountB
   print balanceA
   print balanceB
+  print =<< timeit test01
+  print =<< timeit test02
+  print =<< timeit test03
